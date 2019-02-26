@@ -6,6 +6,7 @@ const app = express();
 
 require('./startup/logging')();
 require('./startup/routes_handler')(app);
+require('./startup/db')();
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {

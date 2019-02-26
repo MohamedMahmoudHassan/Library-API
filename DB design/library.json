@@ -1,0 +1,2567 @@
+{
+    "GUID": "35b4e7d0-347f-11e9-9d76-77db22677e02",
+    "modelName": "",
+    "code": "",
+    "lastModifTS": "2019-02-25T08:02:45.275Z",
+    "persistenceSchemaVersion": "2",
+    "description": "",
+    "comments": "",
+    "author": "",
+    "version": "",
+    "collections": [
+        {
+            "GUID": "c556e9d0-34a0-11e9-9d76-77db22677e02",
+            "collectionName": "Admin",
+            "code": "",
+            "type": "object",
+            "description": "",
+            "comments": "",
+            "$schema": "",
+            "additionalProperties": false,
+            "properties": [
+                {
+                    "type": "string",
+                    "minLength": "",
+                    "maxLength": "",
+                    "pattern": "",
+                    "format": "",
+                    "default": "",
+                    "primaryKey": false,
+                    "relationshipType": "Foreign Key",
+                    "parentRelationship": "c56345e1-34a0-11e9-9d76-77db22677e02",
+                    "childRelationships": [],
+                    "foreignCollection": "d18ce720-3493-11e9-9d76-77db22677e02",
+                    "foreignField": [
+                        "d18ce720-3493-11e9-9d76-77db22677e02",
+                        "28b0f280-3494-11e9-9d76-77db22677e02"
+                    ],
+                    "enum": [],
+                    "sample": "",
+                    "GUID": "c56345e0-34a0-11e9-9d76-77db22677e02",
+                    "name": "user_id",
+                    "code": "",
+                    "description": "",
+                    "comments": "",
+                    "dependencies": [],
+                    "required": false,
+                    "id": "",
+                    "hackoladeMeta": {},
+                    "error": {
+                        "name": false
+                    }
+                },
+                {
+                    "type": "string",
+                    "minLength": "",
+                    "maxLength": "",
+                    "pattern": "",
+                    "format": "",
+                    "default": "",
+                    "primaryKey": false,
+                    "relationshipType": "",
+                    "parentRelationship": "",
+                    "childRelationships": [],
+                    "foreignCollection": "",
+                    "foreignField": [],
+                    "enum": [],
+                    "sample": "",
+                    "GUID": "c56345e4-34a0-11e9-9d76-77db22677e02",
+                    "name": "fname",
+                    "code": "",
+                    "description": "",
+                    "comments": "",
+                    "dependencies": [],
+                    "required": false,
+                    "id": "",
+                    "hackoladeMeta": {},
+                    "error": {
+                        "name": false
+                    }
+                },
+                {
+                    "type": "string",
+                    "minLength": "",
+                    "maxLength": "",
+                    "pattern": "",
+                    "format": "",
+                    "default": "",
+                    "primaryKey": false,
+                    "relationshipType": "",
+                    "parentRelationship": "",
+                    "childRelationships": [],
+                    "foreignCollection": "",
+                    "foreignField": [],
+                    "enum": [],
+                    "sample": "",
+                    "GUID": "c56345e5-34a0-11e9-9d76-77db22677e02",
+                    "name": "lname",
+                    "code": "",
+                    "description": "",
+                    "comments": "",
+                    "dependencies": [],
+                    "required": false,
+                    "id": "",
+                    "hackoladeMeta": {},
+                    "error": {
+                        "name": false
+                    }
+                }
+            ],
+            "definitions": {
+                "type": "definitions",
+                "properties": [],
+                "GUID": "c56345e6-34a0-11e9-9d76-77db22677e02"
+            },
+            "capped": false,
+            "validationLevel": "Off",
+            "validationAction": "Warn",
+            "size": "",
+            "max": "",
+            "storageEngineName": "WiredTiger",
+            "collectionUsers": [],
+            "indexes": [],
+            "collation": {},
+            "sharding": {
+                "key": "",
+                "hashed": false,
+                "unique": true,
+                "numInitialChunks": "",
+                "collation": "null",
+                "zone": "",
+                "comments": ""
+            },
+            "bucketId": ""
+        },
+        {
+            "GUID": "77dd0820-3490-11e9-9d76-77db22677e02",
+            "collectionName": "Available_copies",
+            "code": "",
+            "type": "object",
+            "description": "",
+            "comments": "",
+            "$schema": "",
+            "additionalProperties": false,
+            "properties": [
+                {
+                    "type": "string",
+                    "minLength": "",
+                    "maxLength": "",
+                    "pattern": "",
+                    "format": "",
+                    "default": "",
+                    "primaryKey": false,
+                    "relationshipType": "Foreign Key",
+                    "parentRelationship": "b45527e0-3492-11e9-9d76-77db22677e02",
+                    "childRelationships": [],
+                    "foreignCollection": "1ffca4e0-3480-11e9-9d76-77db22677e02",
+                    "foreignField": [
+                        "1ffca4e0-3480-11e9-9d76-77db22677e02",
+                        "476def00-3491-11e9-9d76-77db22677e02"
+                    ],
+                    "enum": [],
+                    "sample": "",
+                    "GUID": "35241ee0-3492-11e9-9d76-77db22677e02",
+                    "name": "book_id",
+                    "code": "",
+                    "description": "",
+                    "comments": "",
+                    "dependencies": [],
+                    "required": true,
+                    "id": "",
+                    "hackoladeMeta": {},
+                    "error": {
+                        "name": false
+                    }
+                },
+                {
+                    "type": "string",
+                    "minLength": "",
+                    "maxLength": "",
+                    "pattern": "",
+                    "format": "",
+                    "default": "",
+                    "primaryKey": false,
+                    "relationshipType": "Foreign Key",
+                    "parentRelationship": "ceef0030-3492-11e9-9d76-77db22677e02",
+                    "childRelationships": [],
+                    "foreignCollection": "162fcd70-348f-11e9-9d76-77db22677e02",
+                    "foreignField": [
+                        "162fcd70-348f-11e9-9d76-77db22677e02",
+                        "d1273260-3491-11e9-9d76-77db22677e02"
+                    ],
+                    "enum": [],
+                    "sample": "",
+                    "GUID": "40a670b0-3492-11e9-9d76-77db22677e02",
+                    "name": "branch_id",
+                    "code": "",
+                    "description": "",
+                    "comments": "",
+                    "dependencies": [],
+                    "required": true,
+                    "id": "",
+                    "hackoladeMeta": {},
+                    "error": {
+                        "name": false
+                    }
+                },
+                {
+                    "type": "numeric",
+                    "mode": "",
+                    "unit": "",
+                    "minimum": "",
+                    "exclusiveMinimum": false,
+                    "maximum": "",
+                    "exclusiveMaximum": false,
+                    "multipleOf": "",
+                    "divisibleBy": "",
+                    "default": "",
+                    "primaryKey": false,
+                    "relationshipType": "",
+                    "parentRelationship": "",
+                    "childRelationships": [],
+                    "foreignCollection": "",
+                    "foreignField": [],
+                    "enum": [],
+                    "sample": "",
+                    "GUID": "4f872fc0-3492-11e9-9d76-77db22677e02",
+                    "name": "avail_buy",
+                    "code": "",
+                    "description": "",
+                    "comments": "",
+                    "dependencies": [],
+                    "required": false,
+                    "id": "",
+                    "hackoladeMeta": {},
+                    "error": {
+                        "name": false
+                    }
+                },
+                {
+                    "type": "numeric",
+                    "mode": "",
+                    "unit": "",
+                    "minimum": "",
+                    "exclusiveMinimum": false,
+                    "maximum": "",
+                    "exclusiveMaximum": false,
+                    "multipleOf": "",
+                    "divisibleBy": "",
+                    "default": "",
+                    "primaryKey": false,
+                    "relationshipType": "",
+                    "parentRelationship": "",
+                    "childRelationships": [],
+                    "foreignCollection": "",
+                    "foreignField": [],
+                    "enum": [],
+                    "sample": "",
+                    "GUID": "642e0d40-3492-11e9-9d76-77db22677e02",
+                    "name": "avail_bro",
+                    "code": "",
+                    "description": "",
+                    "comments": "",
+                    "dependencies": [],
+                    "required": false,
+                    "id": "",
+                    "hackoladeMeta": {},
+                    "error": {
+                        "name": false
+                    }
+                }
+            ],
+            "definitions": {
+                "type": "definitions",
+                "properties": [],
+                "GUID": "77e19c00-3490-11e9-9d76-77db22677e02"
+            },
+            "capped": false,
+            "validationLevel": "Off",
+            "validationAction": "Warn",
+            "size": "",
+            "max": "",
+            "storageEngineName": "WiredTiger",
+            "collectionUsers": [],
+            "indexes": [],
+            "collation": {},
+            "sharding": {
+                "key": "",
+                "hashed": false,
+                "unique": true,
+                "numInitialChunks": "",
+                "collation": "null",
+                "zone": "",
+                "comments": ""
+            }
+        },
+        {
+            "GUID": "1ffca4e0-3480-11e9-9d76-77db22677e02",
+            "collectionName": "Books",
+            "code": "",
+            "type": "object",
+            "description": "",
+            "comments": "",
+            "$schema": "",
+            "additionalProperties": false,
+            "properties": [
+                {
+                    "type": "string",
+                    "minLength": "",
+                    "maxLength": "",
+                    "pattern": "",
+                    "format": "",
+                    "default": "",
+                    "primaryKey": true,
+                    "relationshipType": "",
+                    "parentRelationship": "",
+                    "childRelationships": [
+                        "b45527e0-3492-11e9-9d76-77db22677e02",
+                        "73c3eeb0-3496-11e9-9d76-77db22677e02",
+                        "d2d807f0-3497-11e9-9d76-77db22677e02",
+                        "1a4b1ce0-34a1-11e9-9d76-77db22677e02",
+                        "b2430d40-3862-11e9-982f-991fd1ee4947",
+                        "bae2b181-3862-11e9-982f-991fd1ee4947"
+                    ],
+                    "foreignCollection": "",
+                    "foreignField": [],
+                    "enum": [],
+                    "sample": "",
+                    "GUID": "476def00-3491-11e9-9d76-77db22677e02",
+                    "name": "book_id",
+                    "code": "",
+                    "description": "",
+                    "comments": "",
+                    "dependencies": [],
+                    "required": false,
+                    "id": "",
+                    "sampleName": "",
+                    "isPatternField": true,
+                    "error": {
+                        "name": false,
+                        "sampleName": true
+                    }
+                },
+                {
+                    "type": "string",
+                    "minLength": "",
+                    "maxLength": "",
+                    "pattern": "",
+                    "format": "",
+                    "default": "",
+                    "primaryKey": false,
+                    "relationshipType": "",
+                    "parentRelationship": "",
+                    "childRelationships": [],
+                    "foreignCollection": "",
+                    "foreignField": [],
+                    "enum": [],
+                    "sample": "",
+                    "GUID": "345b2ec0-3480-11e9-9d76-77db22677e02",
+                    "name": "name",
+                    "code": "",
+                    "description": "",
+                    "comments": "",
+                    "dependencies": [],
+                    "required": true,
+                    "id": "",
+                    "hackoladeMeta": {},
+                    "error": {
+                        "name": false
+                    }
+                },
+                {
+                    "type": "string",
+                    "minLength": "",
+                    "maxLength": "",
+                    "pattern": "",
+                    "format": "",
+                    "default": "",
+                    "primaryKey": false,
+                    "relationshipType": "",
+                    "parentRelationship": "",
+                    "childRelationships": [],
+                    "foreignCollection": "",
+                    "foreignField": [],
+                    "enum": [],
+                    "sample": "",
+                    "GUID": "9c8682b0-3480-11e9-9d76-77db22677e02",
+                    "name": "author",
+                    "code": "",
+                    "description": "",
+                    "comments": "",
+                    "dependencies": [],
+                    "required": false,
+                    "id": "",
+                    "hackoladeMeta": {},
+                    "error": {
+                        "name": false
+                    }
+                },
+                {
+                    "type": "string",
+                    "minLength": "",
+                    "maxLength": "",
+                    "pattern": "",
+                    "format": "",
+                    "default": "",
+                    "primaryKey": false,
+                    "relationshipType": "",
+                    "parentRelationship": "",
+                    "childRelationships": [],
+                    "foreignCollection": "",
+                    "foreignField": [],
+                    "enum": [],
+                    "sample": "",
+                    "GUID": "3c0109b0-3480-11e9-9d76-77db22677e02",
+                    "name": "des",
+                    "code": "",
+                    "description": "",
+                    "comments": "",
+                    "dependencies": [],
+                    "required": false,
+                    "id": "",
+                    "hackoladeMeta": {},
+                    "error": {
+                        "name": false
+                    }
+                },
+                {
+                    "type": "numeric",
+                    "mode": "",
+                    "unit": "",
+                    "minimum": "",
+                    "exclusiveMinimum": false,
+                    "maximum": "",
+                    "exclusiveMaximum": false,
+                    "multipleOf": "",
+                    "divisibleBy": "",
+                    "default": "",
+                    "primaryKey": false,
+                    "relationshipType": "",
+                    "parentRelationship": "",
+                    "childRelationships": [],
+                    "foreignCollection": "",
+                    "foreignField": [],
+                    "enum": [],
+                    "sample": "",
+                    "GUID": "b5a7c4c0-3480-11e9-9d76-77db22677e02",
+                    "name": "pages_no",
+                    "code": "",
+                    "description": "",
+                    "comments": "",
+                    "dependencies": [],
+                    "required": false,
+                    "id": "",
+                    "hackoladeMeta": {},
+                    "error": {
+                        "name": false
+                    }
+                },
+                {
+                    "type": "numeric",
+                    "mode": "",
+                    "unit": "",
+                    "minimum": "",
+                    "exclusiveMinimum": false,
+                    "maximum": "",
+                    "exclusiveMaximum": false,
+                    "multipleOf": "",
+                    "divisibleBy": "",
+                    "default": "",
+                    "primaryKey": false,
+                    "relationshipType": "",
+                    "parentRelationship": "",
+                    "childRelationships": [],
+                    "foreignCollection": "",
+                    "foreignField": [],
+                    "enum": [],
+                    "sample": "",
+                    "GUID": "781c1ee0-348e-11e9-9d76-77db22677e02",
+                    "name": "ebook_price",
+                    "code": "",
+                    "description": "",
+                    "comments": "",
+                    "dependencies": [],
+                    "required": true,
+                    "id": "",
+                    "hackoladeMeta": {},
+                    "error": {
+                        "name": false
+                    }
+                },
+                {
+                    "type": "numeric",
+                    "mode": "",
+                    "unit": "",
+                    "minimum": "",
+                    "exclusiveMinimum": false,
+                    "maximum": "",
+                    "exclusiveMaximum": false,
+                    "multipleOf": "",
+                    "divisibleBy": "",
+                    "default": "",
+                    "primaryKey": false,
+                    "relationshipType": "",
+                    "parentRelationship": "",
+                    "childRelationships": [],
+                    "foreignCollection": "",
+                    "foreignField": [],
+                    "enum": [],
+                    "sample": "",
+                    "GUID": "869171f0-348e-11e9-9d76-77db22677e02",
+                    "name": "hard_price",
+                    "code": "",
+                    "description": "",
+                    "comments": "",
+                    "dependencies": [],
+                    "required": true,
+                    "id": "",
+                    "hackoladeMeta": {},
+                    "error": {
+                        "name": false
+                    }
+                },
+                {
+                    "type": "string",
+                    "minLength": "",
+                    "maxLength": "",
+                    "pattern": "",
+                    "format": "",
+                    "default": "",
+                    "primaryKey": false,
+                    "relationshipType": "",
+                    "parentRelationship": "",
+                    "childRelationships": [],
+                    "foreignCollection": "",
+                    "foreignField": [],
+                    "enum": [],
+                    "sample": "",
+                    "GUID": "990a4be0-348e-11e9-9d76-77db22677e02",
+                    "name": "img_loc",
+                    "code": "",
+                    "description": "",
+                    "comments": "",
+                    "dependencies": [],
+                    "required": true,
+                    "id": "",
+                    "hackoladeMeta": {},
+                    "error": {
+                        "name": false
+                    }
+                },
+                {
+                    "type": "string",
+                    "minLength": "",
+                    "maxLength": "",
+                    "pattern": "",
+                    "format": "",
+                    "default": "",
+                    "primaryKey": false,
+                    "relationshipType": "",
+                    "parentRelationship": "",
+                    "childRelationships": [],
+                    "foreignCollection": "",
+                    "foreignField": [],
+                    "enum": [],
+                    "sample": "",
+                    "GUID": "a4071a00-348e-11e9-9d76-77db22677e02",
+                    "name": "cpy_loc",
+                    "code": "",
+                    "description": "",
+                    "comments": "",
+                    "dependencies": [],
+                    "required": true,
+                    "id": "",
+                    "hackoladeMeta": {},
+                    "error": {
+                        "name": false
+                    }
+                }
+            ],
+            "definitions": {
+                "type": "definitions",
+                "properties": [],
+                "GUID": "2008b2d0-3480-11e9-9d76-77db22677e02"
+            },
+            "capped": false,
+            "validationLevel": "Off",
+            "validationAction": "Warn",
+            "size": "",
+            "max": "",
+            "storageEngineName": "WiredTiger",
+            "collectionUsers": [],
+            "indexes": [],
+            "sharding": {
+                "key": "",
+                "hashed": false,
+                "unique": true,
+                "numInitialChunks": "",
+                "collation": "null",
+                "zone": "",
+                "comments": ""
+            },
+            "hasCollation": false,
+            "id": ""
+        },
+        {
+            "GUID": "6dfa5860-3497-11e9-9d76-77db22677e02",
+            "collectionName": "Borrow_records",
+            "code": "",
+            "type": "object",
+            "description": "",
+            "comments": "",
+            "$schema": "",
+            "additionalProperties": false,
+            "properties": [
+                {
+                    "type": "string",
+                    "minLength": "",
+                    "maxLength": "",
+                    "pattern": "",
+                    "format": "",
+                    "default": "",
+                    "primaryKey": true,
+                    "relationshipType": "",
+                    "parentRelationship": "",
+                    "childRelationships": [
+                        "e6650cd0-349e-11e9-9d76-77db22677e02"
+                    ],
+                    "foreignCollection": "",
+                    "foreignField": [],
+                    "enum": [],
+                    "sample": "",
+                    "GUID": "78a758d0-3497-11e9-9d76-77db22677e02",
+                    "name": "req_id",
+                    "code": "",
+                    "description": "",
+                    "comments": "",
+                    "dependencies": [],
+                    "required": true,
+                    "id": "",
+                    "hackoladeMeta": {},
+                    "error": {
+                        "name": false
+                    }
+                },
+                {
+                    "type": "string",
+                    "minLength": "",
+                    "maxLength": "",
+                    "pattern": "",
+                    "format": "",
+                    "default": "",
+                    "primaryKey": false,
+                    "relationshipType": "Foreign Key",
+                    "parentRelationship": "076a76c1-388e-11e9-982f-991fd1ee4947",
+                    "childRelationships": [],
+                    "foreignCollection": "c08470a0-3494-11e9-9d76-77db22677e02",
+                    "foreignField": [
+                        "c08470a0-3494-11e9-9d76-77db22677e02",
+                        "49960250-3495-11e9-9d76-77db22677e02"
+                    ],
+                    "enum": [],
+                    "sample": "",
+                    "GUID": "076a76c0-388e-11e9-982f-991fd1ee4947",
+                    "name": "borrower_id",
+                    "code": "",
+                    "description": "",
+                    "comments": "",
+                    "dependencies": [],
+                    "required": true,
+                    "id": "",
+                    "hackoladeMeta": {},
+                    "error": {
+                        "name": false
+                    }
+                },
+                {
+                    "type": "string",
+                    "minLength": "",
+                    "maxLength": "",
+                    "pattern": "",
+                    "format": "",
+                    "default": "",
+                    "primaryKey": false,
+                    "relationshipType": "Foreign Key",
+                    "parentRelationship": "d2d807f0-3497-11e9-9d76-77db22677e02",
+                    "childRelationships": [],
+                    "foreignCollection": "1ffca4e0-3480-11e9-9d76-77db22677e02",
+                    "foreignField": [
+                        "1ffca4e0-3480-11e9-9d76-77db22677e02",
+                        "476def00-3491-11e9-9d76-77db22677e02"
+                    ],
+                    "enum": [],
+                    "sample": "",
+                    "GUID": "bd124cf0-3497-11e9-9d76-77db22677e02",
+                    "name": "book_id",
+                    "code": "",
+                    "description": "",
+                    "comments": "",
+                    "dependencies": [],
+                    "required": true,
+                    "id": "",
+                    "hackoladeMeta": {},
+                    "error": {
+                        "name": false
+                    }
+                },
+                {
+                    "type": "string",
+                    "minLength": "",
+                    "maxLength": "",
+                    "pattern": "",
+                    "format": "",
+                    "default": "",
+                    "primaryKey": false,
+                    "relationshipType": "Foreign Key",
+                    "parentRelationship": "9343d3c0-3498-11e9-9d76-77db22677e02",
+                    "childRelationships": [],
+                    "foreignCollection": "162fcd70-348f-11e9-9d76-77db22677e02",
+                    "foreignField": [
+                        "162fcd70-348f-11e9-9d76-77db22677e02",
+                        "d1273260-3491-11e9-9d76-77db22677e02"
+                    ],
+                    "enum": [],
+                    "sample": "",
+                    "GUID": "85eb1440-3498-11e9-9d76-77db22677e02",
+                    "name": "branch_id",
+                    "code": "",
+                    "description": "",
+                    "comments": "",
+                    "dependencies": [],
+                    "required": true,
+                    "id": "",
+                    "hackoladeMeta": {},
+                    "error": {
+                        "name": false
+                    }
+                },
+                {
+                    "type": "date",
+                    "primaryKey": false,
+                    "relationshipType": "",
+                    "parentRelationship": "",
+                    "childRelationships": [],
+                    "foreignCollection": "",
+                    "foreignField": [],
+                    "default": "",
+                    "format": "",
+                    "sample": "",
+                    "GUID": "4f695ba0-349f-11e9-9d76-77db22677e02",
+                    "name": "from",
+                    "code": "",
+                    "description": "",
+                    "comments": "",
+                    "dependencies": [],
+                    "required": true,
+                    "id": "",
+                    "hackoladeMeta": {},
+                    "error": {
+                        "name": false
+                    }
+                },
+                {
+                    "type": "date",
+                    "primaryKey": false,
+                    "relationshipType": "",
+                    "parentRelationship": "",
+                    "childRelationships": [],
+                    "foreignCollection": "",
+                    "foreignField": [],
+                    "default": "",
+                    "format": "",
+                    "sample": "",
+                    "GUID": "5a168320-349f-11e9-9d76-77db22677e02",
+                    "name": "to",
+                    "code": "",
+                    "description": "",
+                    "comments": "",
+                    "dependencies": [],
+                    "required": true,
+                    "id": "",
+                    "hackoladeMeta": {},
+                    "error": {
+                        "name": false
+                    }
+                },
+                {
+                    "type": "numeric",
+                    "mode": "",
+                    "unit": "",
+                    "minimum": "",
+                    "exclusiveMinimum": false,
+                    "maximum": "",
+                    "exclusiveMaximum": false,
+                    "multipleOf": "",
+                    "divisibleBy": "",
+                    "default": "",
+                    "primaryKey": false,
+                    "relationshipType": "",
+                    "parentRelationship": "",
+                    "childRelationships": [],
+                    "foreignCollection": "",
+                    "foreignField": [],
+                    "enum": [],
+                    "sample": "",
+                    "GUID": "d04077b0-3498-11e9-9d76-77db22677e02",
+                    "name": "status",
+                    "code": "",
+                    "description": "",
+                    "comments": "",
+                    "dependencies": [],
+                    "required": true,
+                    "id": "",
+                    "hackoladeMeta": {}
+                }
+            ],
+            "definitions": {
+                "type": "definitions",
+                "properties": [],
+                "GUID": "6e038020-3497-11e9-9d76-77db22677e02"
+            },
+            "capped": false,
+            "validationLevel": "Off",
+            "validationAction": "Warn",
+            "size": "",
+            "max": "",
+            "storageEngineName": "WiredTiger",
+            "collectionUsers": [],
+            "indexes": [],
+            "collation": {},
+            "sharding": {
+                "key": "",
+                "hashed": false,
+                "unique": true,
+                "numInitialChunks": "",
+                "collation": "null",
+                "zone": "",
+                "comments": ""
+            }
+        },
+        {
+            "GUID": "162fcd70-348f-11e9-9d76-77db22677e02",
+            "collectionName": "Branches",
+            "code": "",
+            "type": "object",
+            "description": "",
+            "comments": "",
+            "$schema": "",
+            "additionalProperties": false,
+            "properties": [
+                {
+                    "type": "string",
+                    "minLength": "",
+                    "maxLength": "",
+                    "pattern": "",
+                    "format": "",
+                    "default": "",
+                    "primaryKey": true,
+                    "relationshipType": "",
+                    "parentRelationship": "",
+                    "childRelationships": [
+                        "ceef0030-3492-11e9-9d76-77db22677e02",
+                        "097e5b60-3498-11e9-9d76-77db22677e02",
+                        "9343d3c0-3498-11e9-9d76-77db22677e02",
+                        "3efe3690-34a0-11e9-9d76-77db22677e02"
+                    ],
+                    "foreignCollection": "",
+                    "foreignField": [],
+                    "enum": [],
+                    "sample": "",
+                    "GUID": "d1273260-3491-11e9-9d76-77db22677e02",
+                    "name": "branch_id",
+                    "code": "",
+                    "description": "",
+                    "comments": "",
+                    "dependencies": [],
+                    "required": true,
+                    "id": "",
+                    "hackoladeMeta": {},
+                    "error": {
+                        "name": false
+                    }
+                },
+                {
+                    "type": "string",
+                    "minLength": "",
+                    "maxLength": "",
+                    "pattern": "",
+                    "format": "",
+                    "default": "",
+                    "primaryKey": false,
+                    "relationshipType": "",
+                    "parentRelationship": "",
+                    "childRelationships": [],
+                    "foreignCollection": "",
+                    "foreignField": [],
+                    "enum": [],
+                    "sample": "",
+                    "GUID": "407ecbd0-348f-11e9-9d76-77db22677e02",
+                    "name": "name",
+                    "code": "",
+                    "description": "",
+                    "comments": "",
+                    "dependencies": [],
+                    "required": true,
+                    "id": "",
+                    "hackoladeMeta": {},
+                    "error": {
+                        "name": false
+                    }
+                }
+            ],
+            "definitions": {
+                "type": "definitions",
+                "properties": [],
+                "GUID": "163301c0-348f-11e9-9d76-77db22677e02"
+            },
+            "capped": false,
+            "validationLevel": "Off",
+            "validationAction": "Warn",
+            "size": "",
+            "max": "",
+            "storageEngineName": "WiredTiger",
+            "collectionUsers": [],
+            "indexes": [],
+            "collation": {},
+            "sharding": {
+                "key": "",
+                "hashed": false,
+                "unique": true,
+                "numInitialChunks": "",
+                "collation": "null",
+                "zone": "",
+                "comments": ""
+            }
+        },
+        {
+            "GUID": "05c62040-3496-11e9-9d76-77db22677e02",
+            "collectionName": "Buy_records",
+            "code": "",
+            "type": "object",
+            "description": "",
+            "comments": "",
+            "$schema": "",
+            "additionalProperties": false,
+            "properties": [
+                {
+                    "type": "string",
+                    "minLength": "",
+                    "maxLength": "",
+                    "pattern": "",
+                    "format": "",
+                    "default": "",
+                    "primaryKey": true,
+                    "relationshipType": "",
+                    "parentRelationship": "",
+                    "childRelationships": [
+                        "9746d050-3496-11e9-9d76-77db22677e02"
+                    ],
+                    "foreignCollection": "",
+                    "foreignField": [],
+                    "enum": [],
+                    "sample": "",
+                    "GUID": "3ffc0310-3496-11e9-9d76-77db22677e02",
+                    "name": "req_id",
+                    "code": "",
+                    "description": "",
+                    "comments": "",
+                    "dependencies": [],
+                    "required": true,
+                    "id": "",
+                    "hackoladeMeta": {},
+                    "error": {
+                        "name": false
+                    }
+                },
+                {
+                    "type": "string",
+                    "minLength": "",
+                    "maxLength": "",
+                    "pattern": "",
+                    "format": "",
+                    "default": "",
+                    "primaryKey": false,
+                    "relationshipType": "Foreign Key",
+                    "parentRelationship": "fb739130-388d-11e9-982f-991fd1ee4947",
+                    "childRelationships": [],
+                    "foreignCollection": "c08470a0-3494-11e9-9d76-77db22677e02",
+                    "foreignField": [
+                        "c08470a0-3494-11e9-9d76-77db22677e02",
+                        "49960250-3495-11e9-9d76-77db22677e02"
+                    ],
+                    "enum": [],
+                    "sample": "",
+                    "GUID": "daba7df0-388d-11e9-982f-991fd1ee4947",
+                    "name": "buyer_id",
+                    "code": "",
+                    "description": "",
+                    "comments": "",
+                    "dependencies": [],
+                    "required": true,
+                    "id": "",
+                    "hackoladeMeta": {},
+                    "error": {
+                        "name": false
+                    }
+                },
+                {
+                    "type": "string",
+                    "minLength": "",
+                    "maxLength": "",
+                    "pattern": "",
+                    "format": "",
+                    "default": "",
+                    "primaryKey": false,
+                    "relationshipType": "Foreign Key",
+                    "parentRelationship": "73c3eeb0-3496-11e9-9d76-77db22677e02",
+                    "childRelationships": [],
+                    "foreignCollection": "1ffca4e0-3480-11e9-9d76-77db22677e02",
+                    "foreignField": [
+                        "1ffca4e0-3480-11e9-9d76-77db22677e02",
+                        "476def00-3491-11e9-9d76-77db22677e02"
+                    ],
+                    "enum": [],
+                    "sample": "",
+                    "GUID": "685e2590-3496-11e9-9d76-77db22677e02",
+                    "name": "book_id",
+                    "code": "",
+                    "description": "",
+                    "comments": "",
+                    "dependencies": [],
+                    "required": true,
+                    "id": "",
+                    "hackoladeMeta": {},
+                    "error": {
+                        "name": false
+                    }
+                },
+                {
+                    "type": "string",
+                    "minLength": "",
+                    "maxLength": "",
+                    "pattern": "",
+                    "format": "",
+                    "default": "",
+                    "primaryKey": false,
+                    "relationshipType": "Foreign Key",
+                    "parentRelationship": "097e5b60-3498-11e9-9d76-77db22677e02",
+                    "childRelationships": [],
+                    "foreignCollection": "162fcd70-348f-11e9-9d76-77db22677e02",
+                    "foreignField": [
+                        "162fcd70-348f-11e9-9d76-77db22677e02",
+                        "d1273260-3491-11e9-9d76-77db22677e02"
+                    ],
+                    "enum": [],
+                    "sample": "",
+                    "GUID": "e4284060-3497-11e9-9d76-77db22677e02",
+                    "name": "branch_id",
+                    "code": "",
+                    "description": "",
+                    "comments": "",
+                    "dependencies": [],
+                    "required": true,
+                    "id": "",
+                    "hackoladeMeta": {},
+                    "error": {
+                        "name": false
+                    }
+                },
+                {
+                    "type": "boolean",
+                    "default": "",
+                    "enum": [],
+                    "primaryKey": false,
+                    "relationshipType": "",
+                    "parentRelationship": "",
+                    "childRelationships": [],
+                    "foreignCollection": "",
+                    "foreignField": [],
+                    "sample": "",
+                    "GUID": "0c685160-3497-11e9-9d76-77db22677e02",
+                    "name": "book_type",
+                    "code": "",
+                    "description": "soft(0)\nhard(1)",
+                    "comments": "",
+                    "dependencies": [],
+                    "required": true,
+                    "id": "",
+                    "hackoladeMeta": {}
+                },
+                {
+                    "type": "numeric",
+                    "mode": "",
+                    "unit": "",
+                    "minimum": "",
+                    "exclusiveMinimum": false,
+                    "maximum": "",
+                    "exclusiveMaximum": false,
+                    "multipleOf": "",
+                    "divisibleBy": "",
+                    "default": "",
+                    "primaryKey": false,
+                    "relationshipType": "",
+                    "parentRelationship": "",
+                    "childRelationships": [],
+                    "foreignCollection": "",
+                    "foreignField": [],
+                    "enum": [],
+                    "sample": "",
+                    "GUID": "53d6e890-3497-11e9-9d76-77db22677e02",
+                    "name": "status",
+                    "code": "",
+                    "description": "",
+                    "comments": "",
+                    "dependencies": [],
+                    "required": true,
+                    "id": "",
+                    "hackoladeMeta": {},
+                    "error": {
+                        "name": false
+                    }
+                }
+            ],
+            "definitions": {
+                "type": "definitions",
+                "properties": [],
+                "GUID": "05d00b50-3496-11e9-9d76-77db22677e02"
+            },
+            "capped": false,
+            "validationLevel": "Off",
+            "validationAction": "Warn",
+            "size": "",
+            "max": "",
+            "storageEngineName": "WiredTiger",
+            "collectionUsers": [],
+            "indexes": [],
+            "collation": {},
+            "sharding": {
+                "key": "",
+                "hashed": false,
+                "unique": true,
+                "numInitialChunks": "",
+                "collation": "null",
+                "zone": "",
+                "comments": ""
+            }
+        },
+        {
+            "GUID": "e99ee5a0-349f-11e9-9d76-77db22677e02",
+            "collectionName": "Clerks",
+            "code": "",
+            "type": "object",
+            "description": "",
+            "comments": "",
+            "$schema": "",
+            "additionalProperties": false,
+            "properties": [
+                {
+                    "type": "string",
+                    "minLength": "",
+                    "maxLength": "",
+                    "pattern": "",
+                    "format": "",
+                    "default": "",
+                    "primaryKey": false,
+                    "relationshipType": "Foreign Key",
+                    "parentRelationship": "1efd01a0-34a0-11e9-9d76-77db22677e02",
+                    "childRelationships": [],
+                    "foreignCollection": "d18ce720-3493-11e9-9d76-77db22677e02",
+                    "foreignField": [
+                        "d18ce720-3493-11e9-9d76-77db22677e02",
+                        "28b0f280-3494-11e9-9d76-77db22677e02"
+                    ],
+                    "enum": [],
+                    "sample": "",
+                    "GUID": "1378b400-34a0-11e9-9d76-77db22677e02",
+                    "name": "user_id",
+                    "code": "",
+                    "description": "",
+                    "comments": "",
+                    "dependencies": [],
+                    "required": true,
+                    "id": "",
+                    "hackoladeMeta": {},
+                    "error": {
+                        "name": false
+                    }
+                },
+                {
+                    "type": "string",
+                    "minLength": "",
+                    "maxLength": "",
+                    "pattern": "",
+                    "format": "",
+                    "default": "",
+                    "primaryKey": false,
+                    "relationshipType": "Foreign Key",
+                    "parentRelationship": "3efe3690-34a0-11e9-9d76-77db22677e02",
+                    "childRelationships": [],
+                    "foreignCollection": "162fcd70-348f-11e9-9d76-77db22677e02",
+                    "foreignField": [
+                        "162fcd70-348f-11e9-9d76-77db22677e02",
+                        "d1273260-3491-11e9-9d76-77db22677e02"
+                    ],
+                    "enum": [],
+                    "sample": "",
+                    "GUID": "32b31680-34a0-11e9-9d76-77db22677e02",
+                    "name": "branch_id",
+                    "code": "",
+                    "description": "",
+                    "comments": "",
+                    "dependencies": [],
+                    "required": true,
+                    "id": "",
+                    "hackoladeMeta": {},
+                    "error": {
+                        "name": false
+                    }
+                },
+                {
+                    "type": "string",
+                    "minLength": "",
+                    "maxLength": "",
+                    "pattern": "",
+                    "format": "",
+                    "default": "",
+                    "primaryKey": false,
+                    "relationshipType": "",
+                    "parentRelationship": "",
+                    "childRelationships": [],
+                    "foreignCollection": "",
+                    "foreignField": [],
+                    "enum": [],
+                    "sample": "",
+                    "GUID": "9e1f1680-34a0-11e9-9d76-77db22677e02",
+                    "name": "fname",
+                    "code": "",
+                    "description": "",
+                    "comments": "",
+                    "dependencies": [],
+                    "required": true,
+                    "id": "",
+                    "hackoladeMeta": {},
+                    "error": {
+                        "name": false
+                    }
+                },
+                {
+                    "type": "string",
+                    "minLength": "",
+                    "maxLength": "",
+                    "pattern": "",
+                    "format": "",
+                    "default": "",
+                    "primaryKey": false,
+                    "relationshipType": "",
+                    "parentRelationship": "",
+                    "childRelationships": [],
+                    "foreignCollection": "",
+                    "foreignField": [],
+                    "enum": [],
+                    "sample": "",
+                    "GUID": "a1d25a80-34a0-11e9-9d76-77db22677e02",
+                    "name": "lname",
+                    "code": "",
+                    "description": "",
+                    "comments": "",
+                    "dependencies": [],
+                    "required": true,
+                    "id": "",
+                    "hackoladeMeta": {},
+                    "error": {
+                        "name": false
+                    }
+                }
+            ],
+            "definitions": {
+                "type": "definitions",
+                "properties": [],
+                "GUID": "e9abb6e0-349f-11e9-9d76-77db22677e02"
+            },
+            "capped": false,
+            "validationLevel": "Off",
+            "validationAction": "Warn",
+            "size": "",
+            "max": "",
+            "storageEngineName": "WiredTiger",
+            "collectionUsers": [],
+            "indexes": [],
+            "collation": {},
+            "sharding": {
+                "key": "",
+                "hashed": false,
+                "unique": true,
+                "numInitialChunks": "",
+                "collation": "null",
+                "zone": "",
+                "comments": ""
+            }
+        },
+        {
+            "GUID": "c08470a0-3494-11e9-9d76-77db22677e02",
+            "collectionName": "Customers",
+            "code": "",
+            "type": "object",
+            "description": "",
+            "comments": "",
+            "$schema": "",
+            "additionalProperties": false,
+            "properties": [
+                {
+                    "type": "string",
+                    "minLength": "",
+                    "maxLength": "",
+                    "pattern": "",
+                    "format": "",
+                    "default": "",
+                    "primaryKey": false,
+                    "relationshipType": "Foreign Key",
+                    "parentRelationship": "eb89d140-3495-11e9-9d76-77db22677e02",
+                    "childRelationships": [
+                        "fb739130-388d-11e9-982f-991fd1ee4947",
+                        "076a76c1-388e-11e9-982f-991fd1ee4947"
+                    ],
+                    "foreignCollection": "d18ce720-3493-11e9-9d76-77db22677e02",
+                    "foreignField": [
+                        "d18ce720-3493-11e9-9d76-77db22677e02",
+                        "28b0f280-3494-11e9-9d76-77db22677e02"
+                    ],
+                    "enum": [],
+                    "sample": "",
+                    "GUID": "49960250-3495-11e9-9d76-77db22677e02",
+                    "name": "user_id",
+                    "code": "",
+                    "description": "",
+                    "comments": "",
+                    "dependencies": [],
+                    "required": true,
+                    "id": "",
+                    "hackoladeMeta": {},
+                    "error": {
+                        "name": false
+                    }
+                },
+                {
+                    "type": "string",
+                    "minLength": "",
+                    "maxLength": "",
+                    "pattern": "",
+                    "format": "",
+                    "default": "",
+                    "primaryKey": false,
+                    "relationshipType": "",
+                    "parentRelationship": "",
+                    "childRelationships": [],
+                    "foreignCollection": "",
+                    "foreignField": [],
+                    "enum": [],
+                    "sample": "",
+                    "GUID": "8c794400-34a0-11e9-9d76-77db22677e02",
+                    "name": "fname",
+                    "code": "",
+                    "description": "",
+                    "comments": "",
+                    "dependencies": [],
+                    "required": true,
+                    "id": "",
+                    "hackoladeMeta": {},
+                    "error": {
+                        "name": false
+                    }
+                },
+                {
+                    "type": "string",
+                    "minLength": "",
+                    "maxLength": "",
+                    "pattern": "",
+                    "format": "",
+                    "default": "",
+                    "primaryKey": false,
+                    "relationshipType": "",
+                    "parentRelationship": "",
+                    "childRelationships": [],
+                    "foreignCollection": "",
+                    "foreignField": [],
+                    "enum": [],
+                    "sample": "",
+                    "GUID": "88b00700-34a0-11e9-9d76-77db22677e02",
+                    "name": "lname",
+                    "code": "",
+                    "description": "",
+                    "comments": "",
+                    "dependencies": [],
+                    "required": true,
+                    "id": "",
+                    "hackoladeMeta": {},
+                    "error": {
+                        "name": false
+                    }
+                },
+                {
+                    "type": "array",
+                    "properties": [
+                        {
+                            "type": "string",
+                            "minLength": "",
+                            "maxLength": "",
+                            "pattern": "",
+                            "format": "",
+                            "default": "",
+                            "primaryKey": false,
+                            "relationshipType": "Foreign Key",
+                            "parentRelationship": "9746d050-3496-11e9-9d76-77db22677e02",
+                            "childRelationships": [],
+                            "foreignCollection": "05c62040-3496-11e9-9d76-77db22677e02",
+                            "foreignField": [
+                                "05c62040-3496-11e9-9d76-77db22677e02",
+                                "3ffc0310-3496-11e9-9d76-77db22677e02"
+                            ],
+                            "enum": [],
+                            "sample": "",
+                            "GUID": "7aa47340-3495-11e9-9d76-77db22677e02",
+                            "description": "",
+                            "comments": "",
+                            "required": false,
+                            "id": "",
+                            "hackoladeMeta": {},
+                            "arrayItem": true,
+                            "arrayParentType": "array"
+                        }
+                    ],
+                    "primaryKey": false,
+                    "relationshipType": "",
+                    "parentRelationship": "",
+                    "childRelationships": [],
+                    "foreignCollection": "",
+                    "foreignField": [],
+                    "additionalItems": true,
+                    "minItems": "",
+                    "maxItems": "",
+                    "uniqueItems": false,
+                    "enum": [],
+                    "GUID": "7a6e9630-3495-11e9-9d76-77db22677e02",
+                    "name": "cart",
+                    "code": "",
+                    "description": "",
+                    "comments": "",
+                    "dependencies": [],
+                    "required": false,
+                    "id": "",
+                    "hackoladeMeta": {},
+                    "error": {
+                        "name": false
+                    }
+                },
+                {
+                    "type": "array",
+                    "properties": [
+                        {
+                            "type": "string",
+                            "minLength": "",
+                            "maxLength": "",
+                            "pattern": "",
+                            "format": "",
+                            "default": "",
+                            "primaryKey": false,
+                            "relationshipType": "Foreign Key",
+                            "parentRelationship": "e6650cd0-349e-11e9-9d76-77db22677e02",
+                            "childRelationships": [],
+                            "foreignCollection": "6dfa5860-3497-11e9-9d76-77db22677e02",
+                            "foreignField": [
+                                "6dfa5860-3497-11e9-9d76-77db22677e02",
+                                "78a758d0-3497-11e9-9d76-77db22677e02"
+                            ],
+                            "enum": [],
+                            "sample": "",
+                            "GUID": "dce58fe0-349e-11e9-9d76-77db22677e02",
+                            "description": "",
+                            "comments": "",
+                            "required": false,
+                            "id": "",
+                            "hackoladeMeta": {},
+                            "arrayItem": true,
+                            "arrayParentType": "array"
+                        }
+                    ],
+                    "primaryKey": false,
+                    "relationshipType": "",
+                    "parentRelationship": "",
+                    "childRelationships": [],
+                    "foreignCollection": "",
+                    "foreignField": [],
+                    "additionalItems": true,
+                    "minItems": "",
+                    "maxItems": "",
+                    "uniqueItems": false,
+                    "enum": [],
+                    "GUID": "dca32fb0-349e-11e9-9d76-77db22677e02",
+                    "name": "bor_list",
+                    "code": "",
+                    "description": "",
+                    "comments": "",
+                    "dependencies": [],
+                    "required": false,
+                    "id": "",
+                    "hackoladeMeta": {},
+                    "error": {
+                        "name": false
+                    }
+                },
+                {
+                    "type": "array",
+                    "properties": [
+                        {
+                            "type": "string",
+                            "minLength": "",
+                            "maxLength": "",
+                            "pattern": "",
+                            "format": "",
+                            "default": "",
+                            "primaryKey": false,
+                            "relationshipType": "Foreign Key",
+                            "parentRelationship": "1a4b1ce0-34a1-11e9-9d76-77db22677e02",
+                            "childRelationships": [],
+                            "foreignCollection": "1ffca4e0-3480-11e9-9d76-77db22677e02",
+                            "foreignField": [
+                                "1ffca4e0-3480-11e9-9d76-77db22677e02",
+                                "476def00-3491-11e9-9d76-77db22677e02"
+                            ],
+                            "enum": [],
+                            "sample": "",
+                            "GUID": "c45f11c0-349f-11e9-9d76-77db22677e02",
+                            "description": "",
+                            "comments": "",
+                            "required": false,
+                            "id": "",
+                            "hackoladeMeta": {},
+                            "arrayItem": true,
+                            "arrayParentType": "array"
+                        },
+                        {
+                            "type": "array",
+                            "properties": [
+                                {
+                                    "type": "string",
+                                    "minLength": "",
+                                    "maxLength": "",
+                                    "pattern": "",
+                                    "format": "",
+                                    "default": "",
+                                    "primaryKey": false,
+                                    "relationshipType": "Foreign Key",
+                                    "parentRelationship": "b2430d40-3862-11e9-982f-991fd1ee4947",
+                                    "childRelationships": [],
+                                    "foreignCollection": "1ffca4e0-3480-11e9-9d76-77db22677e02",
+                                    "foreignField": [
+                                        "1ffca4e0-3480-11e9-9d76-77db22677e02",
+                                        "476def00-3491-11e9-9d76-77db22677e02"
+                                    ],
+                                    "enum": [],
+                                    "sample": "",
+                                    "GUID": "b242e631-3862-11e9-982f-991fd1ee4947",
+                                    "description": "",
+                                    "comments": "",
+                                    "required": false,
+                                    "id": "",
+                                    "hackoladeMeta": {},
+                                    "arrayItem": true,
+                                    "arrayParentType": "array"
+                                }
+                            ],
+                            "primaryKey": false,
+                            "relationshipType": "",
+                            "parentRelationship": "",
+                            "childRelationships": [],
+                            "foreignCollection": "",
+                            "foreignField": [],
+                            "additionalItems": true,
+                            "minItems": "",
+                            "maxItems": "",
+                            "uniqueItems": false,
+                            "enum": [],
+                            "GUID": "b242e630-3862-11e9-982f-991fd1ee4947",
+                            "code": "",
+                            "description": "",
+                            "comments": "",
+                            "dependencies": [],
+                            "required": false,
+                            "id": "",
+                            "hackoladeMeta": {},
+                            "arrayItem": true
+                        }
+                    ],
+                    "primaryKey": false,
+                    "relationshipType": "",
+                    "parentRelationship": "",
+                    "childRelationships": [],
+                    "foreignCollection": "",
+                    "foreignField": [],
+                    "additionalItems": true,
+                    "minItems": "",
+                    "maxItems": "",
+                    "uniqueItems": false,
+                    "enum": [],
+                    "GUID": "ac1480a0-349f-11e9-9d76-77db22677e02",
+                    "name": "ebooks_list",
+                    "code": "",
+                    "description": "",
+                    "comments": "",
+                    "dependencies": [],
+                    "required": false,
+                    "id": "",
+                    "hackoladeMeta": {},
+                    "error": {
+                        "name": false
+                    }
+                },
+                {
+                    "type": "array",
+                    "properties": [
+                        {
+                            "type": "string",
+                            "minLength": "",
+                            "maxLength": "",
+                            "pattern": "",
+                            "format": "",
+                            "default": "",
+                            "primaryKey": false,
+                            "relationshipType": "Foreign Key",
+                            "parentRelationship": "bae2b181-3862-11e9-982f-991fd1ee4947",
+                            "childRelationships": [],
+                            "foreignCollection": "1ffca4e0-3480-11e9-9d76-77db22677e02",
+                            "foreignField": [
+                                "1ffca4e0-3480-11e9-9d76-77db22677e02",
+                                "476def00-3491-11e9-9d76-77db22677e02"
+                            ],
+                            "enum": [],
+                            "sample": "",
+                            "GUID": "bae2b180-3862-11e9-982f-991fd1ee4947",
+                            "description": "",
+                            "comments": "",
+                            "required": false,
+                            "id": "",
+                            "hackoladeMeta": {},
+                            "arrayItem": true,
+                            "arrayParentType": "array"
+                        }
+                    ],
+                    "primaryKey": false,
+                    "relationshipType": "",
+                    "parentRelationship": "",
+                    "childRelationships": [],
+                    "foreignCollection": "",
+                    "foreignField": [],
+                    "additionalItems": true,
+                    "minItems": "",
+                    "maxItems": "",
+                    "uniqueItems": false,
+                    "enum": [],
+                    "GUID": "bae28a70-3862-11e9-982f-991fd1ee4947",
+                    "name": "bought_list",
+                    "code": "",
+                    "description": "",
+                    "comments": "",
+                    "dependencies": [],
+                    "required": false,
+                    "id": "",
+                    "hackoladeMeta": {},
+                    "error": {
+                        "name": false
+                    }
+                }
+            ],
+            "definitions": {
+                "type": "definitions",
+                "properties": [],
+                "GUID": "c08cfc20-3494-11e9-9d76-77db22677e02"
+            },
+            "capped": false,
+            "validationLevel": "Off",
+            "validationAction": "Warn",
+            "size": "",
+            "max": "",
+            "storageEngineName": "WiredTiger",
+            "collectionUsers": [],
+            "indexes": [],
+            "collation": {},
+            "sharding": {
+                "key": "",
+                "hashed": false,
+                "unique": true,
+                "numInitialChunks": "",
+                "collation": "null",
+                "zone": "",
+                "comments": ""
+            }
+        },
+        {
+            "GUID": "d18ce720-3493-11e9-9d76-77db22677e02",
+            "collectionName": "Useres",
+            "code": "",
+            "type": "object",
+            "description": "",
+            "comments": "",
+            "$schema": "",
+            "additionalProperties": false,
+            "properties": [
+                {
+                    "type": "string",
+                    "minLength": "",
+                    "maxLength": "",
+                    "pattern": "",
+                    "format": "",
+                    "default": "",
+                    "primaryKey": true,
+                    "relationshipType": "",
+                    "parentRelationship": "",
+                    "childRelationships": [
+                        "eb89d140-3495-11e9-9d76-77db22677e02",
+                        "1efd01a0-34a0-11e9-9d76-77db22677e02",
+                        "c56345e1-34a0-11e9-9d76-77db22677e02"
+                    ],
+                    "foreignCollection": "",
+                    "foreignField": [],
+                    "enum": [],
+                    "sample": "",
+                    "GUID": "28b0f280-3494-11e9-9d76-77db22677e02",
+                    "name": "user_id",
+                    "code": "",
+                    "description": "",
+                    "comments": "",
+                    "dependencies": [],
+                    "required": true,
+                    "id": "",
+                    "hackoladeMeta": {},
+                    "error": {
+                        "name": false
+                    }
+                },
+                {
+                    "type": "string",
+                    "minLength": "",
+                    "maxLength": "",
+                    "pattern": "",
+                    "format": "",
+                    "default": "",
+                    "primaryKey": false,
+                    "relationshipType": "",
+                    "parentRelationship": "",
+                    "childRelationships": [],
+                    "foreignCollection": "",
+                    "foreignField": [],
+                    "enum": [],
+                    "sample": "",
+                    "GUID": "37630070-3494-11e9-9d76-77db22677e02",
+                    "name": "email",
+                    "code": "",
+                    "description": "",
+                    "comments": "",
+                    "dependencies": [],
+                    "required": true,
+                    "id": "",
+                    "hackoladeMeta": {},
+                    "error": {
+                        "name": false
+                    }
+                },
+                {
+                    "type": "string",
+                    "minLength": "",
+                    "maxLength": "",
+                    "pattern": "",
+                    "format": "",
+                    "default": "",
+                    "primaryKey": false,
+                    "relationshipType": "",
+                    "parentRelationship": "",
+                    "childRelationships": [],
+                    "foreignCollection": "",
+                    "foreignField": [],
+                    "enum": [],
+                    "sample": "",
+                    "GUID": "4a65f1f0-3494-11e9-9d76-77db22677e02",
+                    "name": "password",
+                    "code": "",
+                    "description": "",
+                    "comments": "",
+                    "dependencies": [],
+                    "required": true,
+                    "id": "",
+                    "hackoladeMeta": {},
+                    "error": {
+                        "name": false
+                    }
+                },
+                {
+                    "type": "numeric",
+                    "mode": "",
+                    "unit": "",
+                    "minimum": "",
+                    "exclusiveMinimum": false,
+                    "maximum": "",
+                    "exclusiveMaximum": false,
+                    "multipleOf": "",
+                    "divisibleBy": "",
+                    "default": "",
+                    "primaryKey": false,
+                    "relationshipType": "",
+                    "parentRelationship": "",
+                    "childRelationships": [],
+                    "foreignCollection": "",
+                    "foreignField": [],
+                    "enum": [],
+                    "sample": "",
+                    "GUID": "579c8370-3494-11e9-9d76-77db22677e02",
+                    "name": "type",
+                    "code": "",
+                    "description": "",
+                    "comments": "",
+                    "dependencies": [],
+                    "required": true,
+                    "id": "",
+                    "hackoladeMeta": {},
+                    "error": {
+                        "name": false
+                    }
+                }
+            ],
+            "definitions": {
+                "type": "definitions",
+                "properties": [],
+                "GUID": "d1943a20-3493-11e9-9d76-77db22677e02"
+            },
+            "capped": false,
+            "validationLevel": "Off",
+            "validationAction": "Warn",
+            "size": "",
+            "max": "",
+            "storageEngineName": "WiredTiger",
+            "collectionUsers": [],
+            "indexes": [],
+            "collation": {},
+            "sharding": {
+                "key": "",
+                "hashed": false,
+                "unique": true,
+                "numInitialChunks": "",
+                "collation": "null",
+                "zone": "",
+                "comments": ""
+            }
+        }
+    ],
+    "buckets": [],
+    "views": [],
+    "relationships": [
+        {
+            "GUID": "b45527e0-3492-11e9-9d76-77db22677e02",
+            "name": "fk Book.book_id to Available_copies.book_id",
+            "description": "",
+            "comments": "",
+            "relationshipType": "Foreign Key",
+            "parentCollection": "1ffca4e0-3480-11e9-9d76-77db22677e02",
+            "parentField": [
+                "1ffca4e0-3480-11e9-9d76-77db22677e02",
+                "476def00-3491-11e9-9d76-77db22677e02"
+            ],
+            "parentCardinality": "1",
+            "childCollection": "77dd0820-3490-11e9-9d76-77db22677e02",
+            "childField": [
+                "77dd0820-3490-11e9-9d76-77db22677e02",
+                "35241ee0-3492-11e9-9d76-77db22677e02"
+            ],
+            "childCardinality": "0..n"
+        },
+        {
+            "GUID": "ceef0030-3492-11e9-9d76-77db22677e02",
+            "name": "fk Branch.branch_id to Available_copies.branch_id",
+            "description": "",
+            "comments": "",
+            "relationshipType": "Foreign Key",
+            "parentCollection": "162fcd70-348f-11e9-9d76-77db22677e02",
+            "parentField": [
+                "162fcd70-348f-11e9-9d76-77db22677e02",
+                "d1273260-3491-11e9-9d76-77db22677e02"
+            ],
+            "parentCardinality": "1",
+            "childCollection": "77dd0820-3490-11e9-9d76-77db22677e02",
+            "childField": [
+                "77dd0820-3490-11e9-9d76-77db22677e02",
+                "40a670b0-3492-11e9-9d76-77db22677e02"
+            ],
+            "childCardinality": "0..n"
+        },
+        {
+            "GUID": "eb89d140-3495-11e9-9d76-77db22677e02",
+            "name": "fk Useres.user_id to Customers.user_id",
+            "description": "",
+            "comments": "",
+            "relationshipType": "Foreign Key",
+            "parentCollection": "d18ce720-3493-11e9-9d76-77db22677e02",
+            "parentField": [
+                "d18ce720-3493-11e9-9d76-77db22677e02",
+                "28b0f280-3494-11e9-9d76-77db22677e02"
+            ],
+            "parentCardinality": "1",
+            "childCollection": "c08470a0-3494-11e9-9d76-77db22677e02",
+            "childField": [
+                "c08470a0-3494-11e9-9d76-77db22677e02",
+                "49960250-3495-11e9-9d76-77db22677e02"
+            ],
+            "childCardinality": "1"
+        },
+        {
+            "GUID": "73c3eeb0-3496-11e9-9d76-77db22677e02",
+            "name": "fk Books.book_id to Requests.book_id",
+            "description": "",
+            "comments": "",
+            "relationshipType": "Foreign Key",
+            "parentCollection": "1ffca4e0-3480-11e9-9d76-77db22677e02",
+            "parentField": [
+                "1ffca4e0-3480-11e9-9d76-77db22677e02",
+                "476def00-3491-11e9-9d76-77db22677e02"
+            ],
+            "parentCardinality": "1",
+            "childCollection": "05c62040-3496-11e9-9d76-77db22677e02",
+            "childField": [
+                "05c62040-3496-11e9-9d76-77db22677e02",
+                "685e2590-3496-11e9-9d76-77db22677e02"
+            ],
+            "childCardinality": "1"
+        },
+        {
+            "GUID": "9746d050-3496-11e9-9d76-77db22677e02",
+            "name": "fk Requests.req_id to Customers.cart.[0]",
+            "description": "",
+            "comments": "",
+            "relationshipType": "Foreign Key",
+            "parentCollection": "05c62040-3496-11e9-9d76-77db22677e02",
+            "parentField": [
+                "05c62040-3496-11e9-9d76-77db22677e02",
+                "3ffc0310-3496-11e9-9d76-77db22677e02"
+            ],
+            "parentCardinality": "1",
+            "childCollection": "c08470a0-3494-11e9-9d76-77db22677e02",
+            "childField": [
+                "c08470a0-3494-11e9-9d76-77db22677e02",
+                "7a6e9630-3495-11e9-9d76-77db22677e02",
+                "7aa47340-3495-11e9-9d76-77db22677e02"
+            ],
+            "childCardinality": "1"
+        },
+        {
+            "GUID": "d2d807f0-3497-11e9-9d76-77db22677e02",
+            "name": "fk Books.book_id to Borrow_requests.book_id",
+            "description": "",
+            "comments": "",
+            "relationshipType": "Foreign Key",
+            "parentCollection": "1ffca4e0-3480-11e9-9d76-77db22677e02",
+            "parentField": [
+                "1ffca4e0-3480-11e9-9d76-77db22677e02",
+                "476def00-3491-11e9-9d76-77db22677e02"
+            ],
+            "parentCardinality": "1",
+            "childCollection": "6dfa5860-3497-11e9-9d76-77db22677e02",
+            "childField": [
+                "6dfa5860-3497-11e9-9d76-77db22677e02",
+                "bd124cf0-3497-11e9-9d76-77db22677e02"
+            ],
+            "childCardinality": "1"
+        },
+        {
+            "GUID": "097e5b60-3498-11e9-9d76-77db22677e02",
+            "name": "fk Branches.branch_id to Buy_requests.branch_id",
+            "description": "",
+            "comments": "",
+            "relationshipType": "Foreign Key",
+            "parentCollection": "162fcd70-348f-11e9-9d76-77db22677e02",
+            "parentField": [
+                "162fcd70-348f-11e9-9d76-77db22677e02",
+                "d1273260-3491-11e9-9d76-77db22677e02"
+            ],
+            "parentCardinality": "1",
+            "childCollection": "05c62040-3496-11e9-9d76-77db22677e02",
+            "childField": [
+                "05c62040-3496-11e9-9d76-77db22677e02",
+                "e4284060-3497-11e9-9d76-77db22677e02"
+            ],
+            "childCardinality": "1"
+        },
+        {
+            "GUID": "9343d3c0-3498-11e9-9d76-77db22677e02",
+            "name": "fk Branches.branch_id to Borrow_requests.branch_id",
+            "description": "",
+            "comments": "",
+            "relationshipType": "Foreign Key",
+            "parentCollection": "162fcd70-348f-11e9-9d76-77db22677e02",
+            "parentField": [
+                "162fcd70-348f-11e9-9d76-77db22677e02",
+                "d1273260-3491-11e9-9d76-77db22677e02"
+            ],
+            "parentCardinality": "1",
+            "childCollection": "6dfa5860-3497-11e9-9d76-77db22677e02",
+            "childField": [
+                "6dfa5860-3497-11e9-9d76-77db22677e02",
+                "85eb1440-3498-11e9-9d76-77db22677e02"
+            ],
+            "childCardinality": "1"
+        },
+        {
+            "GUID": "e6650cd0-349e-11e9-9d76-77db22677e02",
+            "name": "fk Borrow_requests.req_id to Customers.New Field.[0]",
+            "description": "",
+            "comments": "",
+            "relationshipType": "Foreign Key",
+            "parentCollection": "6dfa5860-3497-11e9-9d76-77db22677e02",
+            "parentField": [
+                "6dfa5860-3497-11e9-9d76-77db22677e02",
+                "78a758d0-3497-11e9-9d76-77db22677e02"
+            ],
+            "parentCardinality": "1",
+            "childCollection": "c08470a0-3494-11e9-9d76-77db22677e02",
+            "childField": [
+                "c08470a0-3494-11e9-9d76-77db22677e02",
+                "dca32fb0-349e-11e9-9d76-77db22677e02",
+                "dce58fe0-349e-11e9-9d76-77db22677e02"
+            ],
+            "childCardinality": "1"
+        },
+        {
+            "GUID": "1efd01a0-34a0-11e9-9d76-77db22677e02",
+            "name": "fk Useres.user_id to Clerks.user_id",
+            "description": "",
+            "comments": "",
+            "relationshipType": "Foreign Key",
+            "parentCollection": "d18ce720-3493-11e9-9d76-77db22677e02",
+            "parentField": [
+                "d18ce720-3493-11e9-9d76-77db22677e02",
+                "28b0f280-3494-11e9-9d76-77db22677e02"
+            ],
+            "parentCardinality": "1",
+            "childCollection": "e99ee5a0-349f-11e9-9d76-77db22677e02",
+            "childField": [
+                "e99ee5a0-349f-11e9-9d76-77db22677e02",
+                "1378b400-34a0-11e9-9d76-77db22677e02"
+            ],
+            "childCardinality": "1"
+        },
+        {
+            "GUID": "3efe3690-34a0-11e9-9d76-77db22677e02",
+            "name": "fk Branches.branch_id to Clerks.branch_id",
+            "description": "",
+            "comments": "",
+            "relationshipType": "Foreign Key",
+            "parentCollection": "162fcd70-348f-11e9-9d76-77db22677e02",
+            "parentField": [
+                "162fcd70-348f-11e9-9d76-77db22677e02",
+                "d1273260-3491-11e9-9d76-77db22677e02"
+            ],
+            "parentCardinality": "1",
+            "childCollection": "e99ee5a0-349f-11e9-9d76-77db22677e02",
+            "childField": [
+                "e99ee5a0-349f-11e9-9d76-77db22677e02",
+                "32b31680-34a0-11e9-9d76-77db22677e02"
+            ],
+            "childCardinality": "1"
+        },
+        {
+            "GUID": "c56345e1-34a0-11e9-9d76-77db22677e02",
+            "name": "fk Useres.user_id to Clerks.user_id",
+            "description": "",
+            "comments": "",
+            "relationshipType": "Foreign Key",
+            "parentCollection": "d18ce720-3493-11e9-9d76-77db22677e02",
+            "parentField": [
+                "d18ce720-3493-11e9-9d76-77db22677e02",
+                "28b0f280-3494-11e9-9d76-77db22677e02"
+            ],
+            "parentCardinality": "1",
+            "childCollection": "c556e9d0-34a0-11e9-9d76-77db22677e02",
+            "childField": [
+                "c556e9d0-34a0-11e9-9d76-77db22677e02",
+                "c56345e0-34a0-11e9-9d76-77db22677e02"
+            ],
+            "childCardinality": "1"
+        },
+        {
+            "GUID": "1a4b1ce0-34a1-11e9-9d76-77db22677e02",
+            "name": "fk Books.book_id to Customers.soft_list.[0]",
+            "description": "",
+            "comments": "",
+            "relationshipType": "Foreign Key",
+            "parentCollection": "1ffca4e0-3480-11e9-9d76-77db22677e02",
+            "parentField": [
+                "1ffca4e0-3480-11e9-9d76-77db22677e02",
+                "476def00-3491-11e9-9d76-77db22677e02"
+            ],
+            "parentCardinality": "1",
+            "childCollection": "c08470a0-3494-11e9-9d76-77db22677e02",
+            "childField": [
+                "c08470a0-3494-11e9-9d76-77db22677e02",
+                "ac1480a0-349f-11e9-9d76-77db22677e02",
+                "c45f11c0-349f-11e9-9d76-77db22677e02"
+            ],
+            "childCardinality": "1"
+        },
+        {
+            "GUID": "b2430d40-3862-11e9-982f-991fd1ee4947",
+            "name": "fk Books.book_id to Customers.soft_list.[0]",
+            "description": "",
+            "comments": "",
+            "relationshipType": "Foreign Key",
+            "parentCollection": "1ffca4e0-3480-11e9-9d76-77db22677e02",
+            "parentField": [
+                "1ffca4e0-3480-11e9-9d76-77db22677e02",
+                "476def00-3491-11e9-9d76-77db22677e02"
+            ],
+            "parentCardinality": "1",
+            "childCollection": "c08470a0-3494-11e9-9d76-77db22677e02",
+            "childField": [
+                "c08470a0-3494-11e9-9d76-77db22677e02",
+                "ac1480a0-349f-11e9-9d76-77db22677e02",
+                "b242e630-3862-11e9-982f-991fd1ee4947",
+                "b242e631-3862-11e9-982f-991fd1ee4947"
+            ],
+            "childCardinality": "1"
+        },
+        {
+            "GUID": "bae2b181-3862-11e9-982f-991fd1ee4947",
+            "name": "fk Books.book_id to Customers.soft_list.[0]",
+            "description": "",
+            "comments": "",
+            "relationshipType": "Foreign Key",
+            "parentCollection": "1ffca4e0-3480-11e9-9d76-77db22677e02",
+            "parentField": [
+                "1ffca4e0-3480-11e9-9d76-77db22677e02",
+                "476def00-3491-11e9-9d76-77db22677e02"
+            ],
+            "parentCardinality": "1",
+            "childCollection": "c08470a0-3494-11e9-9d76-77db22677e02",
+            "childField": [
+                "c08470a0-3494-11e9-9d76-77db22677e02",
+                "bae28a70-3862-11e9-982f-991fd1ee4947",
+                "bae2b180-3862-11e9-982f-991fd1ee4947"
+            ],
+            "childCardinality": "1"
+        },
+        {
+            "GUID": "fb739130-388d-11e9-982f-991fd1ee4947",
+            "name": "fk Customers.user_id to Buy_records.buyer_id",
+            "description": "",
+            "comments": "",
+            "relationshipType": "Foreign Key",
+            "parentCollection": "c08470a0-3494-11e9-9d76-77db22677e02",
+            "parentField": [
+                "c08470a0-3494-11e9-9d76-77db22677e02",
+                "49960250-3495-11e9-9d76-77db22677e02"
+            ],
+            "parentCardinality": "1",
+            "childCollection": "05c62040-3496-11e9-9d76-77db22677e02",
+            "childField": [
+                "05c62040-3496-11e9-9d76-77db22677e02",
+                "daba7df0-388d-11e9-982f-991fd1ee4947"
+            ],
+            "childCardinality": "1"
+        },
+        {
+            "GUID": "076a76c1-388e-11e9-982f-991fd1ee4947",
+            "name": "fk Customers.user_id to Buy_records.buyer_id",
+            "description": "",
+            "comments": "",
+            "relationshipType": "Foreign Key",
+            "parentCollection": "c08470a0-3494-11e9-9d76-77db22677e02",
+            "parentField": [
+                "c08470a0-3494-11e9-9d76-77db22677e02",
+                "49960250-3495-11e9-9d76-77db22677e02"
+            ],
+            "parentCardinality": "1",
+            "childCollection": "6dfa5860-3497-11e9-9d76-77db22677e02",
+            "childField": [
+                "6dfa5860-3497-11e9-9d76-77db22677e02",
+                "076a76c0-388e-11e9-982f-991fd1ee4947"
+            ],
+            "childCardinality": "1"
+        }
+    ],
+    "users": [],
+    "idToNameHashTable": {
+        "076a76c0-388e-11e9-982f-991fd1ee4947": "borrower_id",
+        "daba7df0-388d-11e9-982f-991fd1ee4947": "buyer_id",
+        "bae28a70-3862-11e9-982f-991fd1ee4947": "bought_list",
+        "c556e9d0-34a0-11e9-9d76-77db22677e02": "Admin",
+        "c56345e0-34a0-11e9-9d76-77db22677e02": "user_id",
+        "c56345e4-34a0-11e9-9d76-77db22677e02": "fname",
+        "c56345e5-34a0-11e9-9d76-77db22677e02": "lname",
+        "a1d25a80-34a0-11e9-9d76-77db22677e02": "lname",
+        "9e1f1680-34a0-11e9-9d76-77db22677e02": "fname",
+        "8c794400-34a0-11e9-9d76-77db22677e02": "fname",
+        "88b00700-34a0-11e9-9d76-77db22677e02": "lname",
+        "0c685160-3497-11e9-9d76-77db22677e02": "book_type",
+        "40a670b0-3492-11e9-9d76-77db22677e02": "branch_id",
+        "869171f0-348e-11e9-9d76-77db22677e02": "hard_price",
+        "1ffca4e0-3480-11e9-9d76-77db22677e02": "Books",
+        "345b2ec0-3480-11e9-9d76-77db22677e02": "name",
+        "3c0109b0-3480-11e9-9d76-77db22677e02": "des",
+        "9c8682b0-3480-11e9-9d76-77db22677e02": "author",
+        "b5a7c4c0-3480-11e9-9d76-77db22677e02": "pages_no",
+        "781c1ee0-348e-11e9-9d76-77db22677e02": "ebook_price",
+        "990a4be0-348e-11e9-9d76-77db22677e02": "img_loc",
+        "a4071a00-348e-11e9-9d76-77db22677e02": "cpy_loc",
+        "162fcd70-348f-11e9-9d76-77db22677e02": "Branches",
+        "407ecbd0-348f-11e9-9d76-77db22677e02": "name",
+        "77dd0820-3490-11e9-9d76-77db22677e02": "Available_copies",
+        "476def00-3491-11e9-9d76-77db22677e02": "book_id",
+        "d1273260-3491-11e9-9d76-77db22677e02": "branch_id",
+        "35241ee0-3492-11e9-9d76-77db22677e02": "book_id",
+        "4f872fc0-3492-11e9-9d76-77db22677e02": "avail_buy",
+        "642e0d40-3492-11e9-9d76-77db22677e02": "avail_bro",
+        "b45527e0-3492-11e9-9d76-77db22677e02": "fk Book.book_id to Available_copies.book_id",
+        "ceef0030-3492-11e9-9d76-77db22677e02": "fk Branch.branch_id to Available_copies.branch_id",
+        "d18ce720-3493-11e9-9d76-77db22677e02": "Useres",
+        "28b0f280-3494-11e9-9d76-77db22677e02": "user_id",
+        "37630070-3494-11e9-9d76-77db22677e02": "email",
+        "4a65f1f0-3494-11e9-9d76-77db22677e02": "password",
+        "579c8370-3494-11e9-9d76-77db22677e02": "type",
+        "c08470a0-3494-11e9-9d76-77db22677e02": "Customers",
+        "49960250-3495-11e9-9d76-77db22677e02": "user_id",
+        "7a6e9630-3495-11e9-9d76-77db22677e02": "cart",
+        "eb89d140-3495-11e9-9d76-77db22677e02": "fk Useres.user_id to Customers.user_id",
+        "05c62040-3496-11e9-9d76-77db22677e02": "Buy_records",
+        "3ffc0310-3496-11e9-9d76-77db22677e02": "req_id",
+        "685e2590-3496-11e9-9d76-77db22677e02": "book_id",
+        "73c3eeb0-3496-11e9-9d76-77db22677e02": "fk Books.book_id to Requests.book_id",
+        "9746d050-3496-11e9-9d76-77db22677e02": "fk Requests.req_id to Customers.cart.[0]",
+        "53d6e890-3497-11e9-9d76-77db22677e02": "status",
+        "6dfa5860-3497-11e9-9d76-77db22677e02": "Borrow_records",
+        "78a758d0-3497-11e9-9d76-77db22677e02": "req_id",
+        "bd124cf0-3497-11e9-9d76-77db22677e02": "book_id",
+        "d2d807f0-3497-11e9-9d76-77db22677e02": "fk Books.book_id to Borrow_requests.book_id",
+        "e4284060-3497-11e9-9d76-77db22677e02": "branch_id",
+        "097e5b60-3498-11e9-9d76-77db22677e02": "fk Branches.branch_id to Buy_requests.branch_id",
+        "85eb1440-3498-11e9-9d76-77db22677e02": "branch_id",
+        "9343d3c0-3498-11e9-9d76-77db22677e02": "fk Branches.branch_id to Borrow_requests.branch_id",
+        "d04077b0-3498-11e9-9d76-77db22677e02": "status",
+        "dca32fb0-349e-11e9-9d76-77db22677e02": "bor_list",
+        "e6650cd0-349e-11e9-9d76-77db22677e02": "fk Borrow_requests.req_id to Customers.New Field.[0]",
+        "4f695ba0-349f-11e9-9d76-77db22677e02": "from",
+        "5a168320-349f-11e9-9d76-77db22677e02": "to",
+        "ac1480a0-349f-11e9-9d76-77db22677e02": "ebooks_list",
+        "e99ee5a0-349f-11e9-9d76-77db22677e02": "Clerks",
+        "1378b400-34a0-11e9-9d76-77db22677e02": "user_id",
+        "1efd01a0-34a0-11e9-9d76-77db22677e02": "fk Useres.user_id to Clerks.user_id",
+        "32b31680-34a0-11e9-9d76-77db22677e02": "branch_id",
+        "3efe3690-34a0-11e9-9d76-77db22677e02": "fk Branches.branch_id to Clerks.branch_id",
+        "c56345e1-34a0-11e9-9d76-77db22677e02": "fk Useres.user_id to Clerks.user_id",
+        "1a4b1ce0-34a1-11e9-9d76-77db22677e02": "fk Books.book_id to Customers.soft_list.[0]",
+        "b2430d40-3862-11e9-982f-991fd1ee4947": "fk Books.book_id to Customers.soft_list.[0]",
+        "bae2b181-3862-11e9-982f-991fd1ee4947": "fk Books.book_id to Customers.soft_list.[0]",
+        "fb739130-388d-11e9-982f-991fd1ee4947": "fk Customers.user_id to Buy_records.buyer_id",
+        "076a76c1-388e-11e9-982f-991fd1ee4947": "fk Customers.user_id to Buy_records.buyer_id"
+    },
+    "definitions": {
+        "type": "definitions",
+        "properties": [],
+        "GUID": "35b4e7d1-347f-11e9-9d76-77db22677e02"
+    },
+    "externalDefinitions": {
+        "type": "externalDefinitions",
+        "properties": [],
+        "GUID": "35b4e7d2-347f-11e9-9d76-77db22677e02"
+    },
+    "dbVersion": "v3.6",
+    "dbVendor": "MongoDB",
+    "hideModelViews": true,
+    "appTarget": "MONGODB",
+    "creationTS": "2019-02-19T19:47:37.805Z",
+    "isCreatedByPlugin": true,
+    "pluginInformation": {
+        "pluginEngineVersion": "1.0.0"
+    },
+    "applicationInformation": {
+        "version": "2.4.4"
+    },
+    "settings": {
+        "centralPane": {
+            "dbLevel": {
+                "erd": [
+                    {
+                        "GUID": "1ffca4e0-3480-11e9-9d76-77db22677e02",
+                        "x": 328,
+                        "y": 250,
+                        "width": 243,
+                        "height": 156,
+                        "color": {}
+                    },
+                    {
+                        "GUID": "162fcd70-348f-11e9-9d76-77db22677e02",
+                        "x": 50,
+                        "y": 50,
+                        "width": 243,
+                        "height": 58,
+                        "color": {
+                            "hsl": {
+                                "h": 206.57142857142858,
+                                "s": 0.8974358974358974,
+                                "l": 0.5411764705882353,
+                                "a": 1
+                            },
+                            "hex": "#2196f3",
+                            "rgb": {
+                                "r": 33,
+                                "g": 150,
+                                "b": 243,
+                                "a": 1
+                            },
+                            "hsv": {
+                                "h": 206.57142857142858,
+                                "s": 0.8641975308641976,
+                                "v": 0.9529411764705882,
+                                "a": 1
+                            },
+                            "oldHue": 198.8429752066116,
+                            "source": "hex"
+                        }
+                    },
+                    {
+                        "GUID": "77dd0820-3490-11e9-9d76-77db22677e02",
+                        "x": 50,
+                        "y": 158,
+                        "width": 243,
+                        "height": 85,
+                        "color": {
+                            "hsl": {
+                                "h": 45.18218623481781,
+                                "s": 0.9919678714859438,
+                                "l": 0.5117647058823529,
+                                "a": 1
+                            },
+                            "hex": "#fec107",
+                            "rgb": {
+                                "r": 254,
+                                "g": 193,
+                                "b": 7,
+                                "a": 1
+                            },
+                            "hsv": {
+                                "h": 45.18218623481781,
+                                "s": 0.9724409448818897,
+                                "v": 0.996078431372549,
+                                "a": 1
+                            },
+                            "oldHue": 45.18218623481781,
+                            "source": "hex"
+                        }
+                    },
+                    {
+                        "GUID": "d18ce720-3493-11e9-9d76-77db22677e02",
+                        "x": 978,
+                        "y": 423,
+                        "width": 244,
+                        "height": 111,
+                        "color": {
+                            "hsl": {
+                                "h": 206.57142857142858,
+                                "s": 0.8974358974358974,
+                                "l": 0.5411764705882353,
+                                "a": 1
+                            },
+                            "hex": "#2196f3",
+                            "rgb": {
+                                "r": 33,
+                                "g": 150,
+                                "b": 243,
+                                "a": 1
+                            },
+                            "hsv": {
+                                "h": 206.57142857142858,
+                                "s": 0.8641975308641976,
+                                "v": 0.9529411764705882,
+                                "a": 1
+                            },
+                            "oldHue": 3.789473684210526,
+                            "source": "hex"
+                        }
+                    },
+                    {
+                        "GUID": "c08470a0-3494-11e9-9d76-77db22677e02",
+                        "x": 976,
+                        "y": 237,
+                        "width": 241,
+                        "height": 148,
+                        "color": {
+                            "hsl": {
+                                "h": 199.53488372093022,
+                                "s": 0.18297872340425528,
+                                "l": 0.46078431372549017,
+                                "a": 1
+                            },
+                            "hex": "#607d8b",
+                            "rgb": {
+                                "r": 96,
+                                "g": 125,
+                                "b": 139,
+                                "a": 1
+                            },
+                            "hsv": {
+                                "h": 199.53488372093022,
+                                "s": 0.3093525179856115,
+                                "v": 0.5450980392156862,
+                                "a": 1
+                            },
+                            "oldHue": 14.454545454545455,
+                            "source": "hex"
+                        }
+                    },
+                    {
+                        "GUID": "05c62040-3496-11e9-9d76-77db22677e02",
+                        "x": 695,
+                        "y": 279,
+                        "width": 239,
+                        "height": 120,
+                        "color": {
+                            "hsl": {
+                                "h": 3.789473684210526,
+                                "s": 0.904761904761905,
+                                "l": 0.5882352941176471,
+                                "a": 1
+                            },
+                            "hex": "#f54337",
+                            "rgb": {
+                                "r": 245,
+                                "g": 67,
+                                "b": 55,
+                                "a": 1
+                            },
+                            "hsv": {
+                                "h": 3.789473684210526,
+                                "s": 0.7755102040816326,
+                                "v": 0.9607843137254902,
+                                "a": 1
+                            },
+                            "oldHue": 3.789473684210526,
+                            "source": "hex"
+                        }
+                    },
+                    {
+                        "GUID": "6dfa5860-3497-11e9-9d76-77db22677e02",
+                        "x": 702,
+                        "y": 40,
+                        "width": 242,
+                        "height": 129,
+                        "color": {
+                            "hsl": {
+                                "h": 290.8029197080292,
+                                "s": 0.631336405529954,
+                                "l": 0.42549019607843136,
+                                "a": 1
+                            },
+                            "hex": "#9c28b1",
+                            "rgb": {
+                                "r": 156,
+                                "g": 40,
+                                "b": 177,
+                                "a": 1
+                            },
+                            "hsv": {
+                                "h": 290.8029197080292,
+                                "s": 0.7740112994350282,
+                                "v": 0.6941176470588235,
+                                "a": 1
+                            },
+                            "oldHue": 290.8029197080292,
+                            "source": "hex"
+                        }
+                    },
+                    {
+                        "GUID": "e99ee5a0-349f-11e9-9d76-77db22677e02",
+                        "x": 40,
+                        "y": 429,
+                        "width": 240,
+                        "height": 100,
+                        "color": {
+                            "hsl": {
+                                "h": 3.789473684210526,
+                                "s": 0.904761904761905,
+                                "l": 0.5882352941176471,
+                                "a": 1
+                            },
+                            "hex": "#f54337",
+                            "rgb": {
+                                "r": 245,
+                                "g": 67,
+                                "b": 55,
+                                "a": 1
+                            },
+                            "hsv": {
+                                "h": 3.789473684210526,
+                                "s": 0.7755102040816326,
+                                "v": 0.9607843137254902,
+                                "a": 1
+                            },
+                            "oldHue": 290.8029197080292,
+                            "source": "hex"
+                        }
+                    },
+                    {
+                        "GUID": "c556e9d0-34a0-11e9-9d76-77db22677e02",
+                        "x": 1395,
+                        "y": 429,
+                        "width": 240,
+                        "height": 100,
+                        "color": {
+                            "hsl": {
+                                "h": 3.789473684210526,
+                                "s": 0.904761904761905,
+                                "l": 0.5882352941176471,
+                                "a": 1
+                            },
+                            "hex": "#f54337",
+                            "rgb": {
+                                "r": 245,
+                                "g": 67,
+                                "b": 55,
+                                "a": 1
+                            },
+                            "hsv": {
+                                "h": 3.789473684210526,
+                                "s": 0.7755102040816326,
+                                "v": 0.9607843137254902,
+                                "a": 1
+                            },
+                            "oldHue": 290.8029197080292,
+                            "source": "hex"
+                        }
+                    }
+                ],
+                "buckets": [
+                    {
+                        "GUID": ""
+                    }
+                ],
+                "collapsedNodes": [
+                    "dca32fb0-349e-11e9-9d76-77db22677e02",
+                    "ac1480a0-349f-11e9-9d76-77db22677e02",
+                    "bae28a70-3862-11e9-982f-991fd1ee4947",
+                    "7a6e9630-3495-11e9-9d76-77db22677e02"
+                ],
+                "activeRelationship": "",
+                "selectedCollections": [],
+                "graphView": {
+                    "erd": [],
+                    "buckets": []
+                },
+                "activeRelationshipFields": {
+                    "childField": [],
+                    "parentField": []
+                },
+                "displayColorPicker": false
+            },
+            "collectionLevel": {},
+            "changed": false
+        },
+        "dtDiagram": {
+            "collapsedNodes": [],
+            "details": true
+        }
+    }
+}

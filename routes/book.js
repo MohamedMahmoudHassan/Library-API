@@ -9,7 +9,7 @@ const books = [
 
 
 router.get('/:id', (req, res) => {
-  res.send(books[req.params.id]);
+  res.send(books[req.params.id - 1]);
 });
 
 module.exports = router;

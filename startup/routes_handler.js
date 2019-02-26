@@ -1,3 +1,4 @@
+const express = require('express');
 const home = require('../routes/home');
 const login = require('../routes/login');
 const reg = require('../routes/registration');
@@ -6,6 +7,7 @@ const book = require('../routes/book');
 const profile = require('../routes/profile');
 
 module.exports = (app) => {
+  app.use(express.json());
   app.use('/', home);
   app.use('/home', home);
   app.use('/login', login);
