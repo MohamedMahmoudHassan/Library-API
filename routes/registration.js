@@ -11,12 +11,13 @@ router.get('/', (req, res) => {
 
 // eslint-disable-next-line consistent-return
 router.post('/', async (req, res) => {
-  req.body.type = 0;
+  req.body.type = req.body.type || 1;
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
   const user = new User(req.body);
   const result = await user.save();
+
   res.send(result);
 });
 
