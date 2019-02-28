@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Joi = require('joi');
 // eslint-disable-next-line no-unused-vars
-const startupDebugger = require('debug')('app:startup');
+const valDebugger = require('debug')('app:startup');
 
 function validation(body) {
   const Schema = {
@@ -14,6 +14,22 @@ function validation(body) {
     ebook_price: Joi.number().required(),
     hard_price: Joi.number().required(),
   };
+
+  return Joi.validate(body, Schema);
+}
+
+function updValidation(body) {
+  const Schema = {
+    name: Joi.string().min(3).max(20),
+    author: Joi.string().min(5).max(20),
+    description: Joi.string().min(40).max(200),
+    pages_no: Joi.number(),
+    img_loc: Joi.string(),
+    cpy_loc: Joi.string(),
+    ebook_price: Joi.number(),
+    hard_price: Joi.number(),
+  };
+
   return Joi.validate(body, Schema);
 }
 
@@ -28,14 +44,14 @@ const Book = mongoose.model('Book', new mongoose.Schema({
   hard_price: { type: Number, required: true },
 }));
 
-function handleQuery(query) {
+function qryHandle(query) {
   let sortSplit;
   let sortFilter = {};
   if (query.sort) {
     sortSplit = query.sort.split('_');
     sortFilter[sortSplit[0]] = sortFilter[1] === 'dsc' ? -1 : 1;
   } else {
-    sortFilter = { name: 1 };
+    sortFilter = { _id: 1 };
   }
 
   const lim = query.max || 8;
@@ -55,7 +71,7 @@ function handleQuery(query) {
 }
 
 async function getBooks(query) {
-  const filter = handleQuery(query);
+  const filter = qryHandle(query);
   const result = await Book
     .find()
     .and(filter.find)
@@ -67,5 +83,6 @@ async function getBooks(query) {
 }
 
 module.exports.validation = validation;
+module.exports.updValidation = updValidation;
 module.exports.Book = Book;
 module.exports.getBooks = getBooks;
