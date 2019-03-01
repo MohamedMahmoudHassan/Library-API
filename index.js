@@ -4,6 +4,7 @@ const winston = require('winston');
 
 const app = express();
 
+require('./startup/env_params_checker')();
 require('./startup/logging')();
 require('./startup/routes_handler')(app);
 require('./startup/db')();
