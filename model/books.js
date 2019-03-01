@@ -72,14 +72,14 @@ function qryHandle(query) {
 
 async function getBooks(query) {
   const filter = qryHandle(query);
-  const result = await Book
+  const books = await Book
     .find()
     .and(filter.find)
     .sort(filter.sort)
     .limit(filter.limit)
     .skip(filter.skip);
 
-  return result;
+  return books;
 }
 
 module.exports.validation = validation;
