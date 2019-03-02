@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const Joi = require('joi');
-
 Joi.objectId = require('joi-objectid')(Joi);
 
 function validate(body) {
@@ -15,7 +14,7 @@ function validate(body) {
 }
 
 const Customer = mongoose.model('Customer', new mongoose.Schema({
-  user_id: { type: String, required: true },
+  user_id: { type: mongoose.Schema.Types.objectId, ref: 'User', required: true },
   cart: [{ type: String }],
   bor_list: [{ type: String }],
   ebooks_list: [{ type: String }],
