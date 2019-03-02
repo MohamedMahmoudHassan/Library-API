@@ -2,7 +2,7 @@ const express = require('express');
 // eslint-disable-next-line no-unused-vars
 const dbDebugger = require('debug')('app:db');
 const bcrypt = require('bcrypt');
-const { User, validate } = require('../model/users');
+const { User, validate, createUser } = require('../model/users');
 
 const router = express.Router();
 
@@ -23,9 +23,7 @@ router.post('/', async (req, res) => {
   const salt = await bcrypt.genSalt(10);
   req.body.password = await bcrypt.hash(req.body.password, salt);
 
-  const user = new User(req.body);
-  const result = await user.save();
-
+  const result = createUser(req.body);
   res.send(result);
 });
 

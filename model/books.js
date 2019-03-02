@@ -3,7 +3,7 @@ const Joi = require('joi');
 // eslint-disable-next-line no-unused-vars
 const valDebugger = require('debug')('app:startup');
 
-function validation(body) {
+function validate(body) {
   const Schema = {
     name: Joi.string().min(3).max(20).required(),
     author: Joi.string().min(5).max(20),
@@ -18,7 +18,7 @@ function validation(body) {
   return Joi.validate(body, Schema);
 }
 
-function updValidation(body) {
+function updValidate(body) {
   const Schema = {
     name: Joi.string().min(3).max(20),
     author: Joi.string().min(5).max(20),
@@ -44,6 +44,7 @@ const Book = mongoose.model('Book', new mongoose.Schema({
   hard_price: { type: Number, required: true },
 }));
 
+// Filtration of books
 function qryHandle(query) {
   let sortSplit;
   let sortFilter = {};
@@ -82,7 +83,7 @@ async function getBooks(query) {
   return books;
 }
 
-module.exports.validation = validation;
-module.exports.updValidation = updValidation;
+module.exports.validate = validate;
+module.exports.updValidate = updValidate;
 module.exports.Book = Book;
 module.exports.getBooks = getBooks;

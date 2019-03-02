@@ -5,7 +5,7 @@ const config = require('config');
 // eslint-disable-next-line no-unused-vars
 const valDebugger = require('debug')('app:validation');
 
-function validation(body) {
+function validate(body) {
   const Schema = {
     fName: Joi.string().regex(/^[A-Z][a-z]{1,15}$/).required(),
     lName: Joi.string().regex(/^[A-Z][a-z]{1,15}$/).required(),
@@ -16,7 +16,7 @@ function validation(body) {
   return Joi.validate(body, Schema);
 }
 
-function loginValidation(body) {
+function loginValidate(body) {
   const Schema = {
     email: Joi.string().email({ minDomainAtoms: 2 }).required(),
     password: Joi.string().regex(/^[\w@-]{8,20}$/).required(),
@@ -44,6 +44,13 @@ userSchema.methods.generateAuthToken = function () {
 
 const User = mongoose.model('User', userSchema);
 
-module.exports.validate = validation;
-module.exports.loginValidation = loginValidation;
+async function createUser(body) {
+  const user = new User(body);
+  const result = await user.save();
+  return result;
+}
+
+module.exports.validate = validate;
+module.exports.loginValidate = loginValidate;
+module.exports.createUser = createUser;
 module.exports.User = User;

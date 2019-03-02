@@ -1,15 +1,11 @@
 const express = require('express');
+const { Book } = require('../model/books');
 
 const router = express.Router();
 
-const books = [
-  { name: 'Book1', price: 20 },
-  { name: 'Book2', price: 100 },
-  { name: 'Book3', price: 50 }];
-
-
-router.get('/:id', (req, res) => {
-  res.send(books[req.params.id - 1]);
+router.get('/:id', async (req, res) => {
+  const book = await Book.findOne({ _id: req.params.id });
+  res.send(book);
 });
 
 module.exports = router;
