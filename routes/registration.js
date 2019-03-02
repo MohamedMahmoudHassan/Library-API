@@ -2,7 +2,7 @@ const express = require('express');
 // eslint-disable-next-line no-unused-vars
 const dbDebugger = require('debug')('app:db');
 const bcrypt = require('bcrypt');
-const { User, validate, createUser } = require('../model/users');
+const { User, validate } = require('../model/users');
 
 const router = express.Router();
 
@@ -12,7 +12,10 @@ router.get('/', (req, res) => {
 
 // eslint-disable-next-line consistent-return
 router.post('/', async (req, res) => {
+  // authorization handling for type.
   req.body.type = req.body.type || 1;
+
+  dbDebugger('before anything');
 
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
@@ -23,8 +26,9 @@ router.post('/', async (req, res) => {
   const salt = await bcrypt.genSalt(10);
   req.body.password = await bcrypt.hash(req.body.password, salt);
 
-  const result = createUser(req.body);
-  res.send(result);
+  const createUser = new User(req.body);
+  const user = await createUser.save();
+  res.send(user);
 });
 
 module.exports = router;

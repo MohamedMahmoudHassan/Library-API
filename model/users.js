@@ -44,13 +44,6 @@ userSchema.methods.generateAuthToken = function () {
 
 const User = mongoose.model('User', userSchema);
 
-async function createUser(body) {
-  const user = new User(body);
-  const result = await user.save();
-  return result;
-}
-
 module.exports.validate = validate;
 module.exports.loginValidate = loginValidate;
-module.exports.createUser = createUser;
 module.exports.User = User;
