@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Joi = require('joi');
+Joi.objectId = require('joi-objectid')(Joi);
 // eslint-disable-next-line no-unused-vars
 const valDebugger = require('debug')('app:startup');
 
@@ -18,8 +19,9 @@ function validate(body) {
   return Joi.validate(body, Schema);
 }
 
-function updValidate(body) {
+function editValidate(body) {
   const Schema = {
+    id: Joi.objectId().required(),
     name: Joi.string().min(3).max(20),
     author: Joi.string().min(5).max(20),
     description: Joi.string().min(40).max(200),
@@ -84,6 +86,6 @@ async function getBooks(query) {
 }
 
 module.exports.validate = validate;
-module.exports.updValidate = updValidate;
+module.exports.editValidate = editValidate;
 module.exports.Book = Book;
 module.exports.getBooks = getBooks;
