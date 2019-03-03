@@ -9,6 +9,7 @@ const addBook = require('../routes/add_book');
 const editBook = require('../routes/edit_book');
 const usersList = require('../routes/users_list');
 const addBranch = require('../routes/add_branch');
+const addCopies = require('../routes/add_copies');
 
 module.exports = (app) => {
   app.use(express.json());
@@ -23,4 +24,5 @@ module.exports = (app) => {
   app.use('/edit_book', editBook);
   app.use('/users_list', usersList);
   app.use('/add_branch', addBranch);
+  app.use('/add_copies', addCopies);
 };
