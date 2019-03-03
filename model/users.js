@@ -9,6 +9,7 @@ const valDebugger = require('debug')('app:validation');
 const customers = require('./customers');
 const clerks = require('./clerks');
 const admins = require('./admins');
+const branch = require('./branches');
 
 const userTypes = [customers, clerks, admins];
 
@@ -60,7 +61,14 @@ async function createUser(body) {
   const customBody = { user_id: `${user._id}` };
   if (body.branch_id)customBody.branch_id = body.branch_id;
 
-  const { error } = userTypes[body.type - 1].validate(customBody);
+  let { error } = userTypes[body.type - 1].validate(customBody);
+
+  if (!error && body.type === 2) {
+    valDebugger(error);
+    const branchExists = await branch.Branch.findOne({ _id: body.branch_id });
+    if (!branchExists)error = { details: [{ message: 'There is no branch with the given id' }] };
+  }
+
   if (error) {
     await User.findByIdAndDelete(user._id);
     return error;
