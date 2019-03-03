@@ -51,13 +51,13 @@ function qryHandle(query) {
   let sortSplit;
   let sortFilter = {};
   if (query.sort) {
-    sortSplit = query.sort.split('_');
-    sortFilter[sortSplit[0]] = sortFilter[1] === 'dsc' ? -1 : 1;
+    sortSplit = query.sort.split('-');
+    sortFilter[sortSplit[0]] = (sortSplit[1] === 'dsc') ? -1 : 1;
   } else {
     sortFilter = { _id: 1 };
   }
 
-  const lim = query.max || 8;
+  const lim = query.max_pagination || 8;
   const page = query.page || 1;
 
   return {
