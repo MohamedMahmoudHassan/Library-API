@@ -61,7 +61,10 @@ async function createUser(body) {
   if (body.branch_id)customBody.branch_id = body.branch_id;
 
   const { error } = userTypes[body.type - 1].validate(customBody);
-  if (error) return error;
+  if (error) {
+    await User.findByIdAndDelete(user._id);
+    return error;
+  }
 
   const userTyped = new userTypes[body.type - 1].User(customBody);
   await userTyped.save();
