@@ -1,9 +1,12 @@
+/* eslint-disable no-underscore-dangle */
 const mongoose = require('mongoose');
 const Joi = require('joi');
+Joi.objectId = require('joi-objectid')(Joi);
 const jwt = require('jsonwebtoken');
 const config = require('config');
 // eslint-disable-next-line no-unused-vars
 const valDebugger = require('debug')('app:validation');
+const { cValidate, Clerk } = require('./clerks');
 
 function validate(body) {
   const Schema = {
@@ -12,6 +15,7 @@ function validate(body) {
     email: Joi.string().email({ minDomainAtoms: 2 }).required(),
     password: Joi.string().regex(/^[\w@-]{8,20}$/).required(),
     type: Joi.number().required(),
+    branch_id: Joi.objectId(),
   };
   return Joi.validate(body, Schema);
 }
@@ -44,6 +48,24 @@ userSchema.methods.generateAuthToken = function () {
 
 const User = mongoose.model('User', userSchema);
 
+async function createUser(body) {
+  // Transaction
+  let user = new User(body);
+  user = await user.save();
+
+  const customBody = { user_id: `${user._id}` };
+  if (body.branch_id)customBody.branch_id = body.branch_id;
+
+  const { error } = cValidate(customBody);
+  if (error) return error;
+
+  const clerk = new Clerk(customBody);
+  await clerk.save();
+
+  return user;
+}
+
 module.exports.validate = validate;
 module.exports.loginValidate = loginValidate;
+module.exports.createUser = createUser;
 module.exports.User = User;

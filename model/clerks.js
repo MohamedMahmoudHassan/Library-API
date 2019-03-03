@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Joi = require('joi');
 Joi.objectId = require('joi-objectid')(Joi);
 
-function validate(body) {
+function cValidate(body) {
   const Schema = {
     user_id: Joi.objectId().required(),
     branch_id: Joi.objectId().required(),
@@ -11,9 +11,9 @@ function validate(body) {
 }
 
 const Clerk = mongoose.model('Clerk', new mongoose.Schema({
-  user_id: { type: mongoose.Schema.Types.objectId, ref: 'User', required: true },
-  branch_id: { type: mongoose.Schema.Types.objectId, ref: 'Branch', required: true },
+  user_id: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+  branch_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Branch', required: true },
 }));
 
 module.exports.Clerk = Clerk;
-module.exports.validate = validate;
+module.exports.cValidate = cValidate;
