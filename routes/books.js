@@ -1,7 +1,12 @@
 const express = require('express');
-const { Book } = require('../model/books');
+const { getBooks, Book } = require('../model/books');
 
 const router = express.Router();
+
+router.get('/', async (req, res) => {
+  const books = await getBooks(req.query);
+  res.send(books);
+});
 
 // eslint-disable-next-line consistent-return
 router.get('/:id', async (req, res) => {
