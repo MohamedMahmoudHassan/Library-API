@@ -13,13 +13,13 @@ function validate(body) {
   return Joi.validate(body, Schema);
 }
 
-const Customer = mongoose.model('Customer', new mongoose.Schema({
-  user_id: { type: mongoose.Schema.Types.objectId, ref: 'User', required: true },
+const User = mongoose.model('Customer', new mongoose.Schema({
+  user_id: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
   cart: [{ type: String }],
   bor_list: [{ type: String }],
   ebooks_list: [{ type: String }],
   bought_list: [{ type: String }],
 }));
 
-module.exports.Customer = Customer;
+module.exports.User = User;
 module.exports.validate = validate;

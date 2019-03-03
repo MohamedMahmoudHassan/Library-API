@@ -6,7 +6,11 @@ const jwt = require('jsonwebtoken');
 const config = require('config');
 // eslint-disable-next-line no-unused-vars
 const valDebugger = require('debug')('app:validation');
-const { cValidate, Clerk } = require('./clerks');
+const customers = require('./customers');
+const clerks = require('./clerks');
+const admins = require('./admins');
+
+const userTypes = [customers, clerks, admins];
 
 function validate(body) {
   const Schema = {
@@ -56,11 +60,11 @@ async function createUser(body) {
   const customBody = { user_id: `${user._id}` };
   if (body.branch_id)customBody.branch_id = body.branch_id;
 
-  const { error } = cValidate(customBody);
+  const { error } = userTypes[body.type - 1].validate(customBody);
   if (error) return error;
 
-  const clerk = new Clerk(customBody);
-  await clerk.save();
+  const userTyped = new userTypes[body.type - 1].User(customBody);
+  await userTyped.save();
 
   return user;
 }

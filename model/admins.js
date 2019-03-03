@@ -9,9 +9,9 @@ function validate(body) {
   return Joi.validate(body, Schema);
 }
 
-const Admin = mongoose.model('Admin', new mongoose.Schema({
-  user_id: { type: mongoose.Schema.Types.objectId, ref: 'User', required: true },
+const User = mongoose.model('Admin', new mongoose.Schema({
+  user_id: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
 }));
 
-module.exports.Admin = Admin;
+module.exports.User = User;
 module.exports.validate = validate;
