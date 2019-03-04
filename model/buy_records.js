@@ -28,7 +28,7 @@ async function fkValidate(body) {
     const availRequest = await AvailCopies.findOne({
       book_id: body.book_id, branch_id: body.branch_id,
     });
-    if (!availRequest) return validationErr('This is book is not available in this branch.');
+    if (!availRequest || !availRequest.avail_buy) return validationErr('This is book is not available in this branch.');
   }
 
   return undefined;
