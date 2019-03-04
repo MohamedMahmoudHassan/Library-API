@@ -26,6 +26,9 @@ router.post('/:id/add_to_cart', async (req, res) => {
 
   if (error) return res.status(400).send(error.details[0].message);
 
+  const book = await Book.findOne({ _id: req.body.book_id });
+  req.body.cost = req.body.book_hard_cpy === true ? book.hard_price : book.ebook_price;
+
   const buy = new BuyRecord(req.body);
   const result = await buy.save();
 
