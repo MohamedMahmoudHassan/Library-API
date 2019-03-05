@@ -42,7 +42,7 @@ async function fkValidate(body) {
 const BuyRecord = mongoose.model('BuyRecord', new mongoose.Schema({
   book_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Book', required: true },
   book_hard_cpy: { type: Boolean, required: true },
-  branch_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Book', required: this.book_hard_cpy === true },
+  branch_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Branch', required: this.book_hard_cpy === true },
   status: { type: Number, required: true },
   cost: { type: Number, required: true },
 }));
