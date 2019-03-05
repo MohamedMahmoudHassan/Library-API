@@ -2,8 +2,10 @@
 /* eslint-disable no-underscore-dangle */
 const express = require('express');
 const { getBooks, Book } = require('../model/books');
-const { validate, fkValidate, BuyRecord } = require('../model/buy_records');
+const buy = require('../model/buy_records');
 const { User } = require('../model/customers');
+const { AvailCopies } = require('../model/available_copies');
+const bro = require('../model/borrow_records');
 
 const router = express.Router();
 
@@ -21,23 +23,49 @@ router.get('/:id', async (req, res) => {
 
 router.post('/:id/add_to_cart', async (req, res) => {
   req.body.book_id = req.params.id;
-  let { error } = validate(req.body);
-  if (!error) error = await fkValidate(req.body);
-
+  let { error } = buy.validate(req.body);
+  if (!error) error = await buy.fkValidate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
   const book = await Book.findOne({ _id: req.body.book_id });
   req.body.cost = req.body.book_hard_cpy === true ? book.hard_price : book.ebook_price;
 
-  const buy = new BuyRecord(req.body);
-  const result = await buy.save();
+  const request = new buy.BuyRecord(req.body);
+  const result = await request.save();
 
   // validate user && transaction !
-  const curUser = await User.findOneAndUpdate({ user_id: req.headers.user_id },
+  const curUser = await User.findOneAndUpdate(
+    { user_id: req.headers.user_id },
     { $push: { cart: result._id } },
-    { new: true });
+    { new: true },
+  );
 
   res.send({ customer: curUser, request: result });
+});
+
+router.post('/:id/borrow_request', async (req, res) => {
+  req.body.book_id = req.params.id;
+  let { error } = bro.validate(req.body);
+  if (!error) error = await bro.fkValidate(req.body);
+  if (error) return res.status(400).send(error.details[0].message);
+
+  const copy = await AvailCopies.findOneAndUpdate(
+    { book_id: req.body.book_id, branch_id: req.body.branch_id },
+    { $inc: { avail_bro: -1 } },
+    { new: true },
+  );
+
+  const request = new bro.BorrowRecord(req.body);
+  const result = await request.save();
+
+
+  const user = await User.findOneAndUpdate(
+    { user_id: req.headers.user_id },
+    { $push: { bro_list: result._id } },
+    { new: true },
+  );
+
+  res.send({ copy, result, user });
 });
 
 module.exports = router;
