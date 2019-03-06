@@ -5,7 +5,7 @@ function validationErr(msg) {
   return { details: [{ message: msg }] };
 }
 
-function valId(body) {
+function isValId(body) {
   const Schema = {
     id: Joi.objectId(),
   };
@@ -13,4 +13,4 @@ function valId(body) {
 }
 
 module.exports.validationErr = validationErr;
-module.exports.valId = valId;
+module.exports.isValId = isValId;
