@@ -15,10 +15,10 @@ function validate(body) {
 
 const User = mongoose.model('Customer', new mongoose.Schema({
   user_id: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
-  cart: [{ type: String }],
-  bro_list: [{ type: String }],
-  ebooks_list: [{ type: String }],
-  bought_list: [{ type: String }],
+  cart: [{ type: mongoose.Schema.Types.ObjectId, ref: 'BuyRecord' }],
+  bro_list: [{ type: mongoose.Schema.Types.ObjectId, ref: 'BroRecord' }],
+  ebooks_list: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Book' }],
+  bought_list: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Book' }],
 }));
 
 module.exports.User = User;
