@@ -6,6 +6,7 @@ const buy = require('../model/buy_records');
 const { User } = require('../model/customers');
 const { AvailCopies } = require('../model/available_copies');
 const bro = require('../model/borrow_records');
+const { isValId } = require('../model/functions');
 
 const router = express.Router();
 
@@ -15,6 +16,7 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/:id', async (req, res) => {
+  if (!isValId(req.params.id)) res.status(400).send(`${req.params.id} is not valid id.`);
   const book = await Book.findOne({ _id: req.params.id });
   if (!book) return res.status(400).send('No book with the given id');
 
