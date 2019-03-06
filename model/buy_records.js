@@ -47,6 +47,29 @@ const BuyRecord = mongoose.model('BuyRecord', new mongoose.Schema({
   cost: { type: Number, required: true },
 }));
 
+async function buyAndPay(recordId) {
+  // Transaction required
+  const record = await BuyRecord.findOne({ _id: recordId });
+
+  if (record.book_hard_cpy) {
+    const reqBook = await AvailCopies.findOne({ _id: record.book_id });
+    if (!reqBook.avail_buy) return -1;
+
+    await AvailCopies.findOneAndUpdate(
+      { _id: record.book_id },
+      { $inc: { avail_buy: -1 } },
+    );
+  }
+
+  await BuyRecord.findOneAndUpdate(
+    { _id: recordId },
+    { $set: { status: 1 } },
+  );
+  return BuyRecord.cost;
+}
+
+
 module.exports.validate = validate;
 module.exports.fkValidate = fkValidate;
 module.exports.BuyRecord = BuyRecord;
+module.exports.buyAndPay = buyAndPay;
