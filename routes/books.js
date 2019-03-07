@@ -16,7 +16,9 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/:id', async (req, res) => {
-  if (!isValId(req.params.id)) res.status(400).send(`${req.params.id} is not valid id.`);
+  const { error } = isValId({ id: req.params.id });
+  if (error) res.status(400).send(error.details[0].message);
+
   const book = await Book.findOne({ _id: req.params.id });
   if (!book) return res.status(400).send('No book with the given id');
 

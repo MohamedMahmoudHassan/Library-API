@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Joi = require('joi');
 Joi.objectId = require('joi-objectid')(Joi);
-const { validationErr } = require('./functions');
+const { validationErr, isValId } = require('./functions');
 const { Book } = require('./books');
 const { Branch } = require('./branches');
 const { AvailCopies } = require('./available_copies');
@@ -47,29 +47,45 @@ const BuyRecord = mongoose.model('BuyRecord', new mongoose.Schema({
   cost: { type: Number, required: true },
 }));
 
-async function buyAndPay(recordId) {
+async function payForRequest(recordId) {
   // Transaction required
   const record = await BuyRecord.findOne({ _id: recordId });
 
   if (record.book_hard_cpy) {
-    const reqBook = await AvailCopies.findOne({ _id: record.book_id });
-    if (!reqBook.avail_buy) return -1;
-
-    await AvailCopies.findOneAndUpdate(
-      { _id: record.book_id },
-      { $inc: { avail_buy: -1 } },
+    const reqBook = await AvailCopies.findOne(
+      { book_id: record.book_id, branch_id: record.branch_id },
     );
+    if (!reqBook || !reqBook.avail_buy) {
+      record.status = -2;
+      await record.save();
+      return -1;
+    }
+    reqBook.avail_buy -= 1;
+    await reqBook.save();
   }
 
-  await BuyRecord.findOneAndUpdate(
-    { _id: recordId },
-    { $set: { status: 1 } },
-  );
-  return BuyRecord.cost;
+  record.status = 1;
+  await record.save();
+  return record.cost;
 }
 
+async function payTotal(cart) {
+  let account = 0;
+  const unavailable = [];
+  // eslint-disable-next-line no-restricted-syntax
+  for (const recordId of cart) {
+    // eslint-disable-next-line no-await-in-loop
+    const sccOperation = await payForRequest(recordId);
+    if (!isValId(sccOperation).error) {
+      unavailable.push(sccOperation);
+    } else {
+      account += sccOperation;
+    }
+  }
+  return { account, unavailable };
+}
 
 module.exports.validate = validate;
 module.exports.fkValidate = fkValidate;
 module.exports.BuyRecord = BuyRecord;
-module.exports.buyAndPay = buyAndPay;
+module.exports.payTotal = payTotal;

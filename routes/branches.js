@@ -12,7 +12,9 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/:id', async (req, res) => {
-  if (!isValId(req.params.id)) res.status(400).send(`${req.params.id} is not valid id.`);
+  const { error } = isValId({ id: req.params.id });
+  if (error) res.status(400).send(error.details[0].message);
+
   const branch = await Branch.findOne({ _id: req.params.id });
   const branchClerks = await User.find({ branch_id: req.params.id }).populate('user_id').select('user_id -_id');
   const branchBooks = await AvailCopies.find({ branch_id: req.params.id }).populate('book_id');

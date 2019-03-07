@@ -1,7 +1,7 @@
 /* eslint-disable consistent-return */
 const express = require('express');
 const { User } = require('../model/customers');
-const { BuyRecord } = require('../model/buy_records');
+const { BuyRecord, payTotal } = require('../model/buy_records');
 const { isValId } = require('../model/functions');
 
 const router = express.Router();
@@ -13,21 +13,31 @@ router.get('/', async (req, res) => {
   res.send(user);
 });
 
+router.get('/myCart/pay', async (req, res) => {
+  const cart = await User.findOne({ user_id: req.headers.user_id }).select('cart -_id');
+
+  const { unavailable, account } = await payTotal(cart.cart);
+
+  res.send({ unavailable, account });
+});
 
 router.get('/myCart/:id', async (req, res) => {
-  if (!isValId(req.params.id)) res.status(400).send(`${req.params.id} is not valid id.`);
+  const { error } = isValId({ id: req.params.id });
+  if (error) res.status(400).send(error.details[0].message);
+
   const record = await BuyRecord.find({ _id: req.params.id });
   res.send({ record });
 });
 
 router.delete('/deleteFromCart/:id', async (req, res) => {
-  if (!isValId(req.params.id)) res.status(400).send(`${req.params.id} is not valid id.`);
+  const { error } = isValId({ id: req.params.id });
+  if (error) res.status(400).send(error.details[0].message);
 
   const cart = await User.findOneAndUpdate(
     { user_id: req.headers.user_id },
-    { $pull: { cart: req.params.id } },
+    { $pop: { cart: -1 } },
+    { new: true },
   );
-  if (!cart) return res.status(400).send('No item in your cart with this id.');
 
   await BuyRecord.findOneAndUpdate({ _id: req.params.id }, {
     $set: { status: -1 },
