@@ -12,27 +12,28 @@ router.get('/', (req, res) => {
 
 // eslint-disable-next-line consistent-return
 router.post('/', async (req, res) => {
+  if (req.body.avail_bro < 0 || req.body.avail_buy < 0) {
+    return res.status(400).send('You can\'t add negative number of copies');
+  }
+
   let { error } = validate(req.body);
   if (!error) error = await fkValidate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
-  const CopyExist = await AvailCopies.findOne({
+  let copy = await AvailCopies.findOne({
     book_id: req.body.book_id,
     branch_id: req.body.branch_id,
   });
 
-  if (CopyExist) {
-    const result = await AvailCopies.findByIdAndUpdate(CopyExist._id,
-      { $inc: { avail_buy: req.body.avail_buy, avail_bro: req.body.avail_bro } },
-      { new: true });
-
-    res.send(result);
+  if (copy) {
+    copy.avail_bro += req.body.avail_bro;
+    copy.avail_buy += req.body.avail_buy;
   } else {
-    const copy = new AvailCopies(req.body);
-    const result = await copy.save();
-
-    res.send(result);
+    copy = new AvailCopies(req.body);
   }
+
+  const result = await copy.save();
+  res.send(result);
 });
 
 module.exports = router;
