@@ -35,7 +35,7 @@ router.delete('/deleteFromCart/:id', async (req, res) => {
 
   const cart = await User.findOneAndUpdate(
     { user_id: req.headers.user_id },
-    { $pop: { cart: -1 } },
+    { $pull: { cart: { $in: req.params.id } } },
     { new: true },
   );
 
