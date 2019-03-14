@@ -14,9 +14,12 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/myCart/pay', async (req, res) => {
-  const cart = await User.findOne({ user_id: req.headers.user_id }).select('cart -_id');
+  const cart = await User.findOne({ user_id: req.headers.user_id });
 
   const { unavailable, account } = await payTotal(cart.cart);
+
+  cart.cart = unavailable;
+  await cart.save();
 
   res.send({ unavailable, account });
 });
