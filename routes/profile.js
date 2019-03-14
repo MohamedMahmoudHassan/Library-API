@@ -25,6 +25,7 @@ router.get('/myCart/:id', async (req, res) => {
   const { error } = isValId({ id: req.params.id });
   if (error) res.status(400).send(error.details[0].message);
 
+  // check if this id belongs to this user.
   const record = await BuyRecord.find({ _id: req.params.id });
   res.send({ record });
 });

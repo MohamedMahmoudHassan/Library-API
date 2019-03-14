@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Joi = require('joi');
 Joi.objectId = require('joi-objectid')(Joi);
-const { validationErr, isValId } = require('./functions');
+const { validationErr } = require('./functions');
 const { Book } = require('./books');
 const { Branch } = require('./branches');
 const { AvailCopies } = require('./available_copies');
@@ -56,7 +56,7 @@ async function payForRequest(recordId) {
       { book_id: record.book_id, branch_id: record.branch_id },
     );
     if (!reqBook || !reqBook.avail_buy) {
-      record.status = -2;
+      record.status = 3;
       await record.save();
       return -1;
     }
@@ -72,12 +72,14 @@ async function payForRequest(recordId) {
 async function payTotal(cart) {
   let account = 0;
   const unavailable = [];
+
   // eslint-disable-next-line no-restricted-syntax
   for (const recordId of cart) {
     // eslint-disable-next-line no-await-in-loop
     const sccOperation = await payForRequest(recordId);
-    if (!isValId(sccOperation).error) {
-      unavailable.push(sccOperation);
+
+    if (sccOperation === -1) {
+      unavailable.push(recordId);
     } else {
       account += sccOperation;
     }
