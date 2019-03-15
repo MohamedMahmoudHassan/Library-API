@@ -4,7 +4,7 @@ Joi.objectId = require('joi-objectid')(Joi);
 const { validationErr } = require('./functions');
 const { Book } = require('./books');
 const { Branch } = require('./branches');
-const { AvailCopies } = require('./available_copies');
+const { AvailCopies, dummyCopy } = require('./available_copies');
 
 function validate(body) {
   const Schema = {
@@ -52,12 +52,17 @@ async function payForRequest(recordId) {
   const record = await BuyRecord.findOne({ _id: recordId });
 
   if (record.book_hard_cpy) {
-    const reqBook = await AvailCopies.findOne(
+    let reqBook = await AvailCopies.findOne(
       { book_id: record.book_id, branch_id: record.branch_id },
     );
     if (!reqBook || !reqBook.avail_buy) {
       record.status = 3;
       await record.save();
+
+      if (!reqBook) reqBook = dummyCopy(record.book_id, record.branch_id);
+      reqBook.waiting_buy.push(recordId);
+      await reqBook.save();
+
       return -1;
     }
     reqBook.avail_buy -= 1;

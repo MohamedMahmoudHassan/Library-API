@@ -32,8 +32,22 @@ const AvailCopies = mongoose.model('Avail_copies', new mongoose.Schema({
   branch_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Branch', required: true },
   avail_buy: { type: Number },
   avail_bro: { type: Number },
+  waiting_buy: [{ type: mongoose.Schema.Types.ObjectId, ref: 'BuyRecord' }],
+  waiting_bro: [{ type: mongoose.Schema.Types.ObjectId, ref: 'BorrowRecord' }],
 }));
+
+async function dummyCopy(bookId, branchId) {
+  const copy = new AvailCopies({
+    book_id: bookId,
+    branch_id: branchId,
+    avail_bro: 0,
+    avail_buy: 0,
+  });
+  const result = await copy.save();
+  return result;
+}
 
 module.exports.AvailCopies = AvailCopies;
 module.exports.validate = validate;
 module.exports.fkValidate = fkValidate;
+module.exports.dummyCopy = dummyCopy;

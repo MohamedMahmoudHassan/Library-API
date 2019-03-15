@@ -31,7 +31,7 @@ async function fkValidate(body) {
   return undefined;
 }
 
-const BorrowRecord = mongoose.model('BorrowRecords', new mongoose.Schema({
+const BorrowRecord = mongoose.model('BorrowRecord', new mongoose.Schema({
   book_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Book', required: true },
   branch_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Branch', required: true },
   from: { type: Date, required: true },
