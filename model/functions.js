@@ -5,6 +5,11 @@ function validationErr(msg) {
   return { details: [{ message: msg }] };
 }
 
+function dateAfter(time, days) {
+  return time + days * 8640000;
+}
+
+
 function isValId(body) {
   const Schema = {
     id: Joi.objectId(),
@@ -14,3 +19,4 @@ function isValId(body) {
 
 module.exports.validationErr = validationErr;
 module.exports.isValId = isValId;
+module.exports.dateAfter = dateAfter;

@@ -9,6 +9,7 @@ const valDebugger = require('debug')('app:validation');
 const customers = require('./customers');
 const clerks = require('./clerks');
 const admins = require('./admins');
+const { dateAfter } = require('./functions');
 
 const userTypes = [customers, clerks, admins];
 
@@ -30,10 +31,6 @@ function loginValidate(body) {
     password: Joi.string().regex(/^[\w@-]{8,20}$/).required(),
   };
   return Joi.validate(body, Schema);
-}
-
-function dateAfter(time, days) {
-  return time + days * 8640000;
 }
 
 const userSchema = new mongoose.Schema({
@@ -58,13 +55,13 @@ async function createUser(body) {
   user = await user.save();
 
   const customBody = { user_id: `${user._id}` };
-  if (body.branch_id)customBody.branch_id = body.branch_id;
+  if (body.type === 2)customBody.branch_id = body.branch_id;
 
   let { error } = userTypes[body.type - 1].validate(customBody);
-  if (!error && body.type === 2)error = await userTypes[1].fkValidate(customBody);
+  if (!error && body.type === 2)error = await clerks.fkValidate(customBody);
 
   if (error) {
-    await User.findByIdAndDelete(user._id);
+    await User.findOneAndDelete({ _id: user._id });
     return error;
   }
 
