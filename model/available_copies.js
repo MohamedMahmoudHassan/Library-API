@@ -11,8 +11,8 @@ function validate(body) {
   const Schema = {
     book_id: Joi.objectId().required(),
     branch_id: Joi.objectId().required(),
-    avail_buy: Joi.number().required(),
-    avail_bro: Joi.number().required(),
+    avail_buy: Joi.number().required().min(0),
+    avail_bro: Joi.number().required().min(0),
   };
 
   return Joi.validate(body, Schema);
