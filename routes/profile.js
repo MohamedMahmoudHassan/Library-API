@@ -15,8 +15,9 @@ router.get('/', async (req, res) => {
 
 router.get('/myCart/pay', async (req, res) => {
   const cart = await User.findOne({ user_id: req.headers.user_id });
+  if (!cart) return res.status(400).send('Your cart is empty.');
 
-  const { unavailable, account } = await payTotal(cart.cart);
+  const { unavailable, account } = await payTotal(cart.cart, req.headers.user_id);
 
   cart.cart = unavailable;
   await cart.save();

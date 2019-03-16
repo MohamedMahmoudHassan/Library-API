@@ -32,8 +32,8 @@ const AvailCopies = mongoose.model('Avail_copies', new mongoose.Schema({
   branch_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Branch', required: true },
   avail_buy: { type: Number },
   avail_bro: { type: Number },
-  waiting_buy: [{ type: mongoose.Schema.Types.ObjectId, ref: 'BuyRecord' }],
-  waiting_bro: [{ type: mongoose.Schema.Types.ObjectId, ref: 'BorrowRecord' }],
+  waiting_buy: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
+  waiting_bro: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
 }));
 
 async function dummyCopy(bookId, branchId) {

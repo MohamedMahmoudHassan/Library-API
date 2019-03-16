@@ -47,21 +47,25 @@ const BuyRecord = mongoose.model('BuyRecord', new mongoose.Schema({
   cost: { type: Number, required: true },
 }));
 
-async function payForRequest(recordId) {
+async function addToBuyWaitingList(reqBook, record, userId) {
+  const book = reqBook || await dummyCopy(record.book_id, record.branch_id);
+  book.waiting_buy.push(userId);
+  await book.save();
+}
+
+async function payForRequest(recordId, userId) {
   // Transaction required
   const record = await BuyRecord.findOne({ _id: recordId });
 
   if (record.book_hard_cpy) {
-    let reqBook = await AvailCopies.findOne(
+    const reqBook = await AvailCopies.findOne(
       { book_id: record.book_id, branch_id: record.branch_id },
     );
     if (!reqBook || !reqBook.avail_buy) {
       record.status = 3;
       await record.save();
 
-      if (!reqBook) reqBook = dummyCopy(record.book_id, record.branch_id);
-      reqBook.waiting_buy.push(recordId);
-      await reqBook.save();
+      await addToBuyWaitingList(reqBook, record, userId);
 
       return -1;
     }
@@ -74,14 +78,14 @@ async function payForRequest(recordId) {
   return record.cost;
 }
 
-async function payTotal(cart) {
+async function payTotal(cart, userId) {
   let account = 0;
   const unavailable = [];
 
   // eslint-disable-next-line no-restricted-syntax
   for (const recordId of cart) {
     // eslint-disable-next-line no-await-in-loop
-    const sccOperation = await payForRequest(recordId);
+    const sccOperation = await payForRequest(recordId, userId);
 
     if (sccOperation === -1) {
       unavailable.push(recordId);
