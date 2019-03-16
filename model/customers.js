@@ -19,6 +19,7 @@ const User = mongoose.model('Customer', new mongoose.Schema({
   bro_list: [{ type: mongoose.Schema.Types.ObjectId, ref: 'BroRecord' }],
   ebooks_list: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Book' }],
   bought_list: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Book' }],
+  notifications_list: { type: mongoose.Schema.Types.ObjectId, ref: 'Notification' },
 }));
 
 module.exports.User = User;
