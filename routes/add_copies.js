@@ -2,7 +2,9 @@
 const express = require('express');
 // eslint-disable-next-line no-unused-vars
 const valDebugger = require('debug')('app:startup');
-const { AvailCopies, validate, fkValidate } = require('../model/available_copies');
+const {
+  AvailCopies, validate, fkValidate, addCopies,
+} = require('../model/available_copies');
 
 const router = express.Router();
 
@@ -16,19 +18,12 @@ router.post('/', async (req, res) => {
   if (!error) error = await fkValidate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
-  let copy = await AvailCopies.findOne({
+  const copy = await AvailCopies.findOne({
     book_id: req.body.book_id,
     branch_id: req.body.branch_id,
   });
 
-  if (copy) {
-    copy.avail_bro += req.body.avail_bro;
-    copy.avail_buy += req.body.avail_buy;
-  } else {
-    copy = new AvailCopies(req.body);
-  }
-
-  const result = await copy.save();
+  const result = await addCopies(copy, req.body);
   res.send(result);
 });
 

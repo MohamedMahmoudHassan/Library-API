@@ -47,7 +47,17 @@ async function dummyCopy(bookId, branchId) {
   return result;
 }
 
+async function addCopies(reqCopy, body) {
+  const copy = reqCopy || await dummyCopy(body.book_id, body.branch_id);
+  copy.avail_bro += body.avail_bro;
+  copy.avail_buy += body.avail_buy;
+
+  const result = await copy.save();
+  return result;
+}
+
 module.exports.AvailCopies = AvailCopies;
 module.exports.validate = validate;
 module.exports.fkValidate = fkValidate;
 module.exports.dummyCopy = dummyCopy;
+module.exports.addCopies = addCopies;
