@@ -6,7 +6,7 @@ const buy = require('../model/buy_records');
 const { User } = require('../model/customers');
 const { AvailCopies } = require('../model/available_copies');
 const bro = require('../model/borrow_records');
-const { isValId } = require('../model/functions');
+const { isValId, validationErr } = require('../model/functions');
 
 const router = express.Router();
 
@@ -46,6 +46,27 @@ router.post('/:id/add_to_cart', async (req, res) => {
 
   res.send({ customer: curUser, request: result });
 });
+
+router.get('/:id/availBranches/:type', async (req, res) => {
+  let { error } = isValId({ id: req.params.id });
+  if (!error) {
+    const book = await Book.findOne({ _id: req.params.id });
+    if (!book) error = validationErr('There is no book with this id.');
+    else if (req.params.type !== 'buy' && req.params.type !== 'bro') {
+      error = validationErr(`"${req.params.type}" is not available type.`);
+    }
+  }
+  if (error) return res.status(400).send(error.details[0].message);
+
+  const result = await AvailCopies.find({
+    book_id: req.params.id,
+    avail_buy: { $gte: req.params.type === 'buy' },
+    avail_bro: { $gte: req.params.type === 'bro' },
+  }).select('_id');
+
+  res.send(result);
+});
+
 
 router.post('/:id/borrow_request', async (req, res) => {
   req.body.book_id = req.params.id;
