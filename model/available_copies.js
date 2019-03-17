@@ -1,3 +1,4 @@
+/* eslint-disable no-await-in-loop */
 const mongoose = require('mongoose');
 const Joi = require('joi');
 Joi.objectId = require('joi-objectid')(Joi);
@@ -6,6 +7,8 @@ const valDebugger = require('debug')('app:startup');
 const { validationErr } = require('./functions');
 const { Book } = require('./books');
 const { Branch } = require('./branches');
+const { User } = require('./customers');
+const { Notification } = require('./notifications');
 
 function validate(body) {
   const Schema = {
@@ -47,10 +50,45 @@ async function dummyCopy(bookId, branchId) {
   return result;
 }
 
+async function notification(bookId, branchId) {
+  const newNotification = new Notification({
+    message: `Book ${bookId} is now available in branch ${branchId}.`,
+    link: 'profile/myCart/pay',
+    status: 0,
+  });
+
+  const result = await newNotification.save();
+  // eslint-disable-next-line no-underscore-dangle
+  return result._id;
+}
+
 async function addCopies(reqCopy, body) {
   const copy = reqCopy || await dummyCopy(body.book_id, body.branch_id);
   copy.avail_bro += body.avail_bro;
   copy.avail_buy += body.avail_buy;
+
+  if (copy.avail_buy) {
+    // eslint-disable-next-line no-restricted-syntax
+    for (const userId of copy.waiting_buy) {
+      const notificationId = await notification(body.book_id, body.branch_id);
+      await User.findOneAndUpdate(
+        { user_id: userId },
+        { $push: { notifications_list: notificationId } },
+      );
+    }
+    copy.waiting_buy = [];
+  }
+
+  if (copy.avail_bro) {
+    // eslint-disable-next-line no-restricted-syntax
+    for (const userId of copy.waiting_bro) {
+      await User.findOneAndUpdate(
+        { user_id: userId },
+        { $push: { notifications_list: await notification(body.book_id, body.branch_id) } },
+      );
+    }
+    copy.waiting_bro = [];
+  }
 
   const result = await copy.save();
   return result;

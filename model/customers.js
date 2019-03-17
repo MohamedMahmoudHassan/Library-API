@@ -7,8 +7,9 @@ function validate(body) {
     user_id: Joi.objectId().required(),
     cart: Joi.array().items(Joi.string()),
     bro_list: Joi.array().items(Joi.string()),
-    ebooks_list: Joi.array().items(Joi.string()),
-    bought_list: Joi.array().items(Joi.string()),
+    ebooks_list: Joi.array().items(Joi.objectId()),
+    bought_list: Joi.array().items(Joi.objectId()),
+    notifications_list: Joi.array().items(Joi.objectId()),
   };
   return Joi.validate(body, Schema);
 }
@@ -19,7 +20,7 @@ const User = mongoose.model('Customer', new mongoose.Schema({
   bro_list: [{ type: mongoose.Schema.Types.ObjectId, ref: 'BroRecord' }],
   ebooks_list: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Book' }],
   bought_list: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Book' }],
-  notifications_list: { type: mongoose.Schema.Types.ObjectId, ref: 'Notification' },
+  notifications_list: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Notification' }],
 }));
 
 module.exports.User = User;

@@ -8,18 +8,17 @@ const router = express.Router();
 
 router.get('/', async (req, res) => {
   const user = await User
-    .find({ user_id: req.headers.user_id })
+    .findOne({ user_id: req.headers.user_id })
     .populate({ path: 'user_id', select: '-password -_id -__v -type' });
   res.send(user);
 });
 
 router.get('/myCart/pay', async (req, res) => {
-  const cart = await User.findOne({ user_id: req.headers.user_id });
+  const user = await User.findOne({ user_id: req.headers.user_id });
 
-  const { unavailable, account } = await payTotal(cart.cart, req.headers.user_id);
-
-  cart.cart = unavailable;
-  await cart.save();
+  const { unavailable, account } = await payTotal(user.cart, req.headers.user_id);
+  user.cart = unavailable;
+  await user.save();
 
   res.send({ unavailable, account });
 });
