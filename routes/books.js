@@ -47,21 +47,21 @@ router.post('/:id/add_to_cart', async (req, res) => {
   res.send({ customer: curUser, request: result });
 });
 
-router.get('/:id/availBranches/:type', async (req, res) => {
+router.get('/:id/availBranches', async (req, res) => {
   let { error } = isValId({ id: req.params.id });
   if (!error) {
     const book = await Book.findOne({ _id: req.params.id });
     if (!book) error = validationErr('There is no book with this id.');
-    else if (req.params.type !== 'buy' && req.params.type !== 'bro') {
-      error = validationErr(`"${req.params.type}" is not available type.`);
+    else if (req.query.buy !== 1 && req.query.bro !== 1) {
+      error = validationErr('You need to choose what is available borrow/buy.');
     }
   }
   if (error) return res.status(400).send(error.details[0].message);
 
   const result = await AvailCopies.find({
     book_id: req.params.id,
-    avail_buy: { $gte: req.params.type === 'buy' },
-    avail_bro: { $gte: req.params.type === 'bro' },
+    avail_buy: { $gte: req.query.buy === 1 },
+    avail_bro: { $gte: req.query.bro === 1 },
   }).select('_id');
 
   res.send(result);
