@@ -6,7 +6,7 @@ function validationErr(msg) {
 }
 
 function dateAfter(time, days) {
-  return time + days * 8640000;
+  return time + days * 86400000;
 }
 
 
