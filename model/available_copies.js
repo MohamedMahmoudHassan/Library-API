@@ -98,13 +98,11 @@ function waitingListValidate(body) {
   const Schema = {
     book_id: Joi.objectId().required(),
     branch_id: Joi.objectId().required(),
-    buy: Joi.boolean().required(),
-    bro: Joi.boolean().required(),
   };
   return Joi.validate(body, Schema);
 }
 
-async function addToBuyWaitingList(body) {
+async function addToWaitingList(body) {
   const copy = body.copy || await dummyCopy(body.book_id, body.branch_id);
   if (body.buy === 1) copy.waiting_buy.push(body.user_id);
   if (body.bro === 1) copy.waiting_bro.push(body.user_id);
@@ -116,5 +114,5 @@ module.exports.AvailCopies = AvailCopies;
 module.exports.validate = validate;
 module.exports.fkValidate = fkValidate;
 module.exports.addCopies = addCopies;
-module.exports.addToBuyWaitingList = addToBuyWaitingList;
+module.exports.addToWaitingList = addToWaitingList;
 module.exports.waitingListValidate = waitingListValidate;

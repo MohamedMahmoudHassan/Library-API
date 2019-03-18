@@ -4,7 +4,7 @@ Joi.objectId = require('joi-objectid')(Joi);
 const { validationErr } = require('./functions');
 const { Book } = require('./books');
 const { Branch } = require('./branches');
-const { AvailCopies, addToBuyWaitingList } = require('./available_copies');
+const { AvailCopies, addToWaitingList } = require('./available_copies');
 
 function validate(body) {
   const Schema = {
@@ -60,11 +60,13 @@ async function payForRequest(recordId, userId) {
       record.status = 3;
       await record.save();
 
-      await addToBuyWaitingList({
+      await addToWaitingList({
         book_id: record.book_id,
         branch_id: record.branch_id,
         copy: reqBook,
         user_id: userId,
+        buy: 1,
+        bro: 0,
       });
 
       return -1;

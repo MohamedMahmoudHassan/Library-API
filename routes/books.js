@@ -5,7 +5,7 @@ const { getBooks, Book } = require('../model/books');
 const buy = require('../model/buy_records');
 const { User } = require('../model/customers');
 const {
-  AvailCopies, waitingListValidate, fkValidate, addToBuyWaitingList,
+  AvailCopies, waitingListValidate, fkValidate, addToWaitingList,
 } = require('../model/available_copies');
 const bro = require('../model/borrow_records');
 const { isValId, validationErr } = require('../model/functions');
@@ -73,17 +73,19 @@ router.post('/:id/add_to_waitingList', async (req, res) => {
   req.body.book_id = req.params.id;
   let { error } = waitingListValidate(req.body);
   if (!error) error = await fkValidate(req.body);
+  if (!error && req.query.buy !== '1' && req.query.bro !== '1') error = validationErr('You need to choose waiting list.');
   if (error) return res.status(400).send(error.details[0].message);
 
   req.body.copy = await AvailCopies.findOne(
     { book_id: req.body.book_id, branch_id: req.body.branch_id },
   );
 
-  if (req.body.copy.avail_buy > 0) return res.status(400).send('There is available copies from this book in this branch.');
+  if (req.body.copy.avail_buy > 0 && req.query.buy === '1') return res.status(400).send('There is available copies from this book to buy from this branch.');
+  if (req.body.copy.avail_bro > 0 && req.query.bro === '1') return res.status(400).send('There is available copies from this book to borrow from this branch.');
 
   req.body.user_id = req.headers.user_id;
 
-  await addToBuyWaitingList(req.body);
+  await addToWaitingList(req.body);
   res.send('You will be notified when this book is available.');
 });
 
