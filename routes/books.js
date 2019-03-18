@@ -29,8 +29,7 @@ router.get('/:id', async (req, res) => {
 
 router.post('/:id/add_to_cart', async (req, res) => {
   req.body.book_id = req.params.id;
-  let { error } = buy.validate(req.body);
-  if (!error) error = await buy.fkValidate(req.body);
+  const { error } = buy.validate(req.body) || await buy.fkValidate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
   const book = await Book.findOne({ _id: req.body.book_id });
@@ -72,7 +71,7 @@ router.get('/:id/availBranches', async (req, res) => {
 router.post('/:id/add_to_waitingList', async (req, res) => {
   req.body.book_id = req.params.id;
   let { error } = waitingListValidate(req.body) || await fkValidate(req.body);
-  if (!error && req.query.buy !== '1' && req.query.bro !== '1') error = validationErr('You need to choose waiting list.');
+  if (!error && req.query.buy !== '1' && req.query.bro !== '1') error = validationErr('You need to choose waiting list buy/bro.');
   if (error) return res.status(400).send(error.details[0].message);
 
   req.body.copy = await AvailCopies.findOne(
@@ -90,8 +89,7 @@ router.post('/:id/add_to_waitingList', async (req, res) => {
 
 router.post('/:id/borrow_request', async (req, res) => {
   req.body.book_id = req.params.id;
-  let { error } = bro.validate(req.body);
-  if (!error) error = await bro.fkValidate(req.body);
+  const { error } = bro.validate(req.body) || await bro.fkValidate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
   const copy = await AvailCopies.findOneAndUpdate(
