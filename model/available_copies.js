@@ -94,9 +94,18 @@ async function addCopies(reqCopy, body) {
   return result;
 }
 
+function waitingListValidate(body) {
+  const Schema = {
+    book_id: Joi.objectId().required(),
+    branch_id: Joi.objectId().required(),
+  };
+  return Joi.validate(body, Schema);
+}
+
 async function addToBuyWaitingList(body) {
   const copy = body.copy || await dummyCopy(body.book_id, body.branch_id);
   copy.waiting_buy.push(body.user_id);
+
   await copy.save();
 }
 
@@ -104,6 +113,6 @@ async function addToBuyWaitingList(body) {
 module.exports.AvailCopies = AvailCopies;
 module.exports.validate = validate;
 module.exports.fkValidate = fkValidate;
-module.exports.dummyCopy = dummyCopy;
 module.exports.addCopies = addCopies;
 module.exports.addToBuyWaitingList = addToBuyWaitingList;
+module.exports.waitingListValidate = waitingListValidate;
