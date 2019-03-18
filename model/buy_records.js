@@ -17,7 +17,7 @@ function validate(body) {
   return Joi.validate(body, Schema);
 }
 
-async function fkValidate(body, waiting = 0) {
+async function fkValidate(body) {
   const book = await Book.findOne({ _id: body.book_id });
   if (!book) return validationErr('No book with this id.');
 
@@ -31,13 +31,7 @@ async function fkValidate(body, waiting = 0) {
       book_id: body.book_id, branch_id: body.branch_id,
     });
 
-    if (!waiting && (!availRequest || !availRequest.avail_buy)) {
-      return validationErr('This is book is not available in this branch.');
-    }
-
-    if (waiting && availRequest) {
-      return validationErr('This is book is already available in this branch.');
-    }
+    if (!availRequest || !availRequest.avail_buy) return validationErr('This book is not available in this branch.');
   } else if (body.branch_id) {
     return validationErr('"branch_id" is not allowed');
   }
