@@ -36,6 +36,13 @@ router.post('/:id/add_to_cart', async (req, res) => {
   if (!req.body.book_hard_cpy) {
     const alreadyHave = user.ebooks_list.find(book => req.body.book_id === `${book}`);
     if (alreadyHave) return res.status(400).send('You already bought this book.');
+
+    // eslint-disable-next-line no-restricted-syntax
+    for (const recordId of user.cart) {
+      // eslint-disable-next-line no-await-in-loop
+      const record = await buy.BuyRecord.findOne({ _id: recordId });
+      if (!record.book_hard_cpy && req.body.book_id === `${record.book_id}`) return res.status(400).send('This book is already in your cart.');
+    }
   }
 
   const book = await Book.findOne({ _id: req.body.book_id });
