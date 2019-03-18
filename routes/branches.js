@@ -3,15 +3,16 @@ const { Branch } = require('../model/branches');
 const { User } = require('../model/clerks');
 const { AvailCopies } = require('../model/available_copies');
 const { isValId } = require('../model/functions');
+const auth = require('../middleware/clerk_admin_auth');
 
 const router = express.Router();
 
-router.get('/', async (req, res) => {
+router.get('/', auth, async (req, res) => {
   const branches = await Branch.find();
   res.send(branches);
 });
 
-router.get('/:id', async (req, res) => {
+router.get('/:id', auth, async (req, res) => {
   const { error } = isValId({ id: req.params.id });
   if (error) res.status(400).send(error.details[0].message);
 

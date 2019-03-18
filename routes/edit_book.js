@@ -4,14 +4,15 @@ const express = require('express');
 const debug = require('debug')('app:startup');
 const { Book, editValidate } = require('../model/books');
 const { isValId } = require('../model/functions');
+const auth = require('../middleware/clerk_auth');
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
+router.get('/', auth, (req, res) => {
   res.send('updating book');
 });
 
-router.put('/:id', async (req, res) => {
+router.put('/:id', auth, async (req, res) => {
   req.body.id = req.params.id;
 
   const { error } = editValidate(req.body);
@@ -25,7 +26,7 @@ router.put('/:id', async (req, res) => {
   res.send(book);
 });
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', auth, async (req, res) => {
   const { error } = isValId({ id: req.params.id });
   if (error) return res.status(400).send(error.details[0].message);
 
