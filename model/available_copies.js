@@ -94,8 +94,16 @@ async function addCopies(reqCopy, body) {
   return result;
 }
 
+async function addToBuyWaitingList(body) {
+  const copy = body.copy || await dummyCopy(body.book_id, body.branch_id);
+  copy.waiting_buy.push(body.user_id);
+  await copy.save();
+}
+
+
 module.exports.AvailCopies = AvailCopies;
 module.exports.validate = validate;
 module.exports.fkValidate = fkValidate;
 module.exports.dummyCopy = dummyCopy;
 module.exports.addCopies = addCopies;
+module.exports.addToBuyWaitingList = addToBuyWaitingList;

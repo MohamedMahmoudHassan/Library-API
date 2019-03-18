@@ -4,7 +4,7 @@ Joi.objectId = require('joi-objectid')(Joi);
 const { validationErr } = require('./functions');
 const { Book } = require('./books');
 const { Branch } = require('./branches');
-const { AvailCopies, dummyCopy } = require('./available_copies');
+const { AvailCopies, addToBuyWaitingList } = require('./available_copies');
 
 function validate(body) {
   const Schema = {
@@ -17,7 +17,7 @@ function validate(body) {
   return Joi.validate(body, Schema);
 }
 
-async function fkValidate(body) {
+async function fkValidate(body, waiting = 0) {
   const book = await Book.findOne({ _id: body.book_id });
   if (!book) return validationErr('No book with this id.');
 
@@ -31,7 +31,13 @@ async function fkValidate(body) {
       book_id: body.book_id, branch_id: body.branch_id,
     });
 
-    if (!availRequest || !availRequest.avail_buy) return validationErr('This is book is not available in this branch.');
+    if (!waiting && (!availRequest || !availRequest.avail_buy)) {
+      return validationErr('This is book is not available in this branch.');
+    }
+
+    if (waiting && availRequest) {
+      return validationErr('This is book is already available in this branch.');
+    }
   } else if (body.branch_id) {
     return validationErr('"branch_id" is not allowed');
   }
@@ -47,12 +53,6 @@ const BuyRecord = mongoose.model('BuyRecord', new mongoose.Schema({
   cost: { type: Number, required: true },
 }));
 
-async function addToBuyWaitingList(reqBook, record, userId) {
-  const book = reqBook || await dummyCopy(record.book_id, record.branch_id);
-  book.waiting_buy.push(userId);
-  await book.save();
-}
-
 async function payForRequest(recordId, userId) {
   // Transaction required
   const record = await BuyRecord.findOne({ _id: recordId });
@@ -61,14 +61,21 @@ async function payForRequest(recordId, userId) {
     const reqBook = await AvailCopies.findOne(
       { book_id: record.book_id, branch_id: record.branch_id },
     );
+
     if (!reqBook || !reqBook.avail_buy) {
       record.status = 3;
       await record.save();
 
-      await addToBuyWaitingList(reqBook, record, userId);
+      await addToBuyWaitingList({
+        book_id: record.book_id,
+        branch_id: record.branch_id,
+        copy: reqBook,
+        user_id: userId,
+      });
 
       return -1;
     }
+
     reqBook.avail_buy -= 1;
     await reqBook.save();
   }
