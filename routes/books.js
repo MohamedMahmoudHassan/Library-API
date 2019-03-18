@@ -71,8 +71,7 @@ router.get('/:id/availBranches', async (req, res) => {
 
 router.post('/:id/add_to_waitingList', async (req, res) => {
   req.body.book_id = req.params.id;
-  let { error } = waitingListValidate(req.body);
-  if (!error) error = await fkValidate(req.body);
+  let { error } = waitingListValidate(req.body) || await fkValidate(req.body);
   if (!error && req.query.buy !== '1' && req.query.bro !== '1') error = validationErr('You need to choose waiting list.');
   if (error) return res.status(400).send(error.details[0].message);
 

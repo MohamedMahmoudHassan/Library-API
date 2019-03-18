@@ -14,8 +14,7 @@ router.get('/', (req, res) => {
 
 // eslint-disable-next-line consistent-return
 router.post('/', async (req, res) => {
-  let { error } = validate(req.body);
-  if (!error) error = await fkValidate(req.body);
+  const { error } = validate(req.body) || await fkValidate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
   const copy = await AvailCopies.findOne({
