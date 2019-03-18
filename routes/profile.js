@@ -3,7 +3,7 @@ const express = require('express');
 const { User } = require('../model/customers');
 const { BuyRecord, payTotal } = require('../model/buy_records');
 const { isValId } = require('../model/functions');
-const auth = require('../middleware/user_auth');
+const auth = require('../middleware/customer_auth');
 
 const router = express.Router();
 
@@ -14,7 +14,7 @@ router.get('/', auth, async (req, res) => {
   res.send(user);
 });
 
-router.get('/myCart/pay', async (req, res) => {
+router.get('/myCart/pay', auth, async (req, res) => {
   const user = await User.findOne({ user_id: req.user.id });
 
   const { account, bought, unavailable } = await payTotal(user.cart, req.user.id);
@@ -30,7 +30,7 @@ router.get('/myCart/pay', async (req, res) => {
   res.send({ account, unavailable });
 });
 
-router.get('/myCart/:id', async (req, res) => {
+router.get('/myCart/:id', auth, async (req, res) => {
   const { error } = isValId({ id: req.params.id });
   if (error) res.status(400).send(error.details[0].message);
 
@@ -39,12 +39,12 @@ router.get('/myCart/:id', async (req, res) => {
   res.send({ record });
 });
 
-router.delete('/deleteFromCart/:id', async (req, res) => {
+router.delete('/deleteFromCart/:id', auth, async (req, res) => {
   const { error } = isValId({ id: req.params.id });
   if (error) res.status(400).send(error.details[0].message);
 
   const cart = await User.findOneAndUpdate(
-    { user_id: req.headers.user_id },
+    { user_id: req.user.id },
     { $pull: { cart: { $in: req.params.id } } },
     { new: true },
   );
