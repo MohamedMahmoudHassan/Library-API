@@ -16,11 +16,17 @@ router.get('/', async (req, res) => {
 router.get('/myCart/pay', async (req, res) => {
   const user = await User.findOne({ user_id: req.headers.user_id });
 
-  const { unavailable, account } = await payTotal(user.cart, req.headers.user_id);
+  const { account, bought, unavailable } = await payTotal(user.cart, req.headers.user_id);
+
+  bought.forEach((book) => {
+    if (book.hard_cpy === true) user.bought_list.push(book.id);
+    else user.ebooks_list.push(book.id);
+  });
+
   user.cart = unavailable;
   await user.save();
 
-  res.send({ unavailable, account });
+  res.send({ account, unavailable });
 });
 
 router.get('/myCart/:id', async (req, res) => {

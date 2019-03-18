@@ -47,7 +47,7 @@ const BuyRecord = mongoose.model('BuyRecord', new mongoose.Schema({
   cost: { type: Number, required: true },
 }));
 
-async function payForRequest(recordId, userId) {
+async function payForEach(recordId, userId) {
   // Transaction required
   const record = await BuyRecord.findOne({ _id: recordId });
 
@@ -69,7 +69,7 @@ async function payForRequest(recordId, userId) {
         bro: 0,
       });
 
-      return -1;
+      return { status: -1 };
     }
 
     reqBook.avail_buy -= 1;
@@ -78,25 +78,27 @@ async function payForRequest(recordId, userId) {
 
   record.status = 1;
   await record.save();
-  return record.cost;
+  return { cost: record.cost, id: record.book_id, hard_cpy: record.book_hard_cpy };
 }
 
 async function payTotal(cart, userId) {
   let account = 0;
   const unavailable = [];
+  const bought = [];
 
   // eslint-disable-next-line no-restricted-syntax
   for (const recordId of cart) {
     // eslint-disable-next-line no-await-in-loop
-    const sccOperation = await payForRequest(recordId, userId);
+    const sccOperation = await payForEach(recordId, userId);
 
-    if (sccOperation === -1) {
+    if (sccOperation.status === -1) {
       unavailable.push(recordId);
     } else {
-      account += sccOperation;
+      account += sccOperation.cost;
+      bought.push({ id: sccOperation.id, hard_cpy: sccOperation.hard_cpy });
     }
   }
-  return { account, unavailable };
+  return { account, bought, unavailable };
 }
 
 module.exports.validate = validate;
