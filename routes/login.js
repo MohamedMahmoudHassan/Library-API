@@ -2,7 +2,7 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
 const { loginValidate, User } = require('../model/users');
-const auth = require('../middleware/log');
+const auth = require('../middleware/login_auth');
 
 const router = express.Router();
 

@@ -3,6 +3,7 @@ const express = require('express');
 const dbDebugger = require('debug')('app:db');
 const bcrypt = require('bcrypt');
 const { User, validate, createUser } = require('../model/users');
+const auth = require('../middleware/reg_auth');
 
 const router = express.Router();
 
@@ -11,10 +12,7 @@ router.get('/', (req, res) => {
 });
 
 // eslint-disable-next-line consistent-return
-router.post('/', async (req, res) => {
-  // authorization handling for type change.
-  req.body.type = req.body.type || 1;
-
+router.post('/', auth, async (req, res) => {
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
