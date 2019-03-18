@@ -15,9 +15,9 @@ router.get('/', auth, async (req, res) => {
 });
 
 router.get('/myCart/pay', async (req, res) => {
-  const user = await User.findOne({ user_id: req.headers.user_id });
+  const user = await User.findOne({ user_id: req.user.id });
 
-  const { account, bought, unavailable } = await payTotal(user.cart, req.headers.user_id);
+  const { account, bought, unavailable } = await payTotal(user.cart, req.user.id);
 
   bought.forEach((book) => {
     if (book.hard_cpy === true) user.bought_list.push(book.id);
@@ -55,6 +55,5 @@ router.delete('/deleteFromCart/:id', async (req, res) => {
 
   res.send(cart);
 });
-
 
 module.exports = router;

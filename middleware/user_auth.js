@@ -6,7 +6,7 @@ module.exports = (req, res, next) => {
   if (!token) return res.status(401).send('Access denied. No token provided.');
 
   const decoded = decode(token);
-  if (token.status === -1) return res.status(400).send('Invalid token.');
+  if (decoded.status === -1) return res.status(400).send('Invalid token.');
 
   req.user = decoded;
   next();
