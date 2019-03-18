@@ -32,6 +32,12 @@ router.post('/:id/add_to_cart', async (req, res) => {
   const { error } = buy.validate(req.body) || await buy.fkValidate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
+  const user = await User.findOne({ user_id: req.headers.user_id });
+  if (!req.body.book_hard_cpy) {
+    const alreadyHave = user.ebooks_list.find(book => req.body.book_id === `${book}`);
+    if (alreadyHave) return res.status(400).send('You already bought this book.');
+  }
+
   const book = await Book.findOne({ _id: req.body.book_id });
   req.body.cost = req.body.book_hard_cpy === true ? book.hard_price : book.ebook_price;
 
@@ -39,13 +45,10 @@ router.post('/:id/add_to_cart', async (req, res) => {
   const result = await request.save();
 
   // validate user && transaction !
-  const curUser = await User.findOneAndUpdate(
-    { user_id: req.headers.user_id },
-    { $push: { cart: result._id } },
-    { new: true },
-  );
+  user.cart.push(result._id);
+  await user.save();
 
-  res.send({ customer: curUser, request: result });
+  res.send({ customer: user, request: result });
 });
 
 router.get('/:id/availBranches', async (req, res) => {
